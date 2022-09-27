@@ -1,4 +1,4 @@
-import { createUser } from './firebase.js';
+import { createUser } from './configFirebase.js';
 
 // import { onNavigate } from '../../main.js';
 import{ app } from './lib/component/firebase.js';

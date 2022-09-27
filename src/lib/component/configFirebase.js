@@ -1,10 +1,8 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+import{ app } from './lib/component/firebase.js';
+const auth = getAuth(app);
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDgNOTiysnRa1Dhq40OobZ54zRnFWOQn34",
   authDomain: "socialnetwork-13.firebaseapp.com",
@@ -17,11 +15,12 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
-export const createUser = (email,pass) => {createUserWithEmailAndPassword(auth, email, pass)
+
+export const createUser = (email,pass) => {
+  createUserWithEmailAndPassword(auth, email, pass)
   .then((userCredential) => {
-  
     const user = userCredential.user;
+    console.log(user)
     
   })
   .catch((error) => {
