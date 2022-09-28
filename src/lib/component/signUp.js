@@ -15,7 +15,9 @@ export const signUp = `
         <input class="inputForm" type="password" placeholder="Contraseña" id="inputPassword">
         
       </form>
+      <div>
       <button class="btnSignIn btnSignUp" id="btnSignUp"  type="submit" onclick="register()">Registrarse</button>
+      </div>
       <a href="/" class="linkSign" onclick="onNavigate('/signIn')">Ya tienes una cuenta? Inicia Sesión</a>
     </div>`;
 
@@ -33,4 +35,4 @@ window.register = function () {
   const pass = document.getElementById('inputPassword').value;
   console.log('name', name);
   createUser(email, pass, name);
-}
+};
