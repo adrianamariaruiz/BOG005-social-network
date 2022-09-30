@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
-import { onNavigate } from '../../main.js';
+// import { onNavigate } from '../../main.js';
+import { authEmailPass } from './authFirebase.js';
 
 export const signIn = ` 
       <picture>
@@ -11,7 +12,7 @@ export const signIn = `
           <input class="inputForm" type="password" placeholder="Contraseña" id="inputPassword">
           </form>
           <div>
-          <button class="btnSignIn" id="btnSignIn" onclick="allData()" >Iniciar Sesión</button>
+          <button class="btnSignIn" id="btnSignIn" onclick="signInEmailPass()" >Iniciar Sesión</button>
           
           <div class="optionSignIn">
           <hr>
@@ -25,10 +26,15 @@ export const signIn = `
         <a href="/signUp" class="linkSign" onclick="onNavigate()">No tienes una cuenta? Registrate</a>
       </div>`;
 
-// const btnSignIn = document.getElementById('btnSignIn');
-// console.log(btnSignIn);
-// // btnSignIn.addEventListener('click', onNavigate('/principalPage'));
+// window.allData = function () {
+//   onNavigate('/principalPage');
+// };
 
-window.allData = function () {
-  onNavigate('/principalPage');
+//   onNavigate('/principalPage');
+
+window.signInEmailPass = function () {
+  const email = document.getElementById('inputEmail').value;
+  const pass = document.getElementById('inputPassword').value;
+  console.log(email, pass);
+  authEmailPass(email, pass);
 };
