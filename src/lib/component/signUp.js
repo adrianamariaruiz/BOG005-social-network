@@ -1,8 +1,5 @@
 import { createUser } from './authFirebase.js';
 
-// import { onNavigate } from '../../main.js';
-// import{ app } from './lib/component/configFirebase.js';
-// import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 export const signUp = `
     <picture>
       <img id="logo" src="./images/logo2.png" alt="logo">
@@ -21,18 +18,12 @@ export const signUp = `
       <a href="/" class="linkSign" onclick="onNavigate('/signIn')">Ya tienes una cuenta? Inicia Sesión</a>
     </div>`;
 
-//     const btnSignUp = document.getElementById('btnSignUp');
-// btnSignUp.addEventListener('click', onNavigate('routes[window.location.pathname]'));
-
-// window.allData = function () {
 //   onNavigate('/principalPage');
-
-// };
 
 window.register = function () {
   const name = document.getElementById('inputName').value;
   const email = document.getElementById('inputEmail').value;
   const pass = document.getElementById('inputPassword').value;
-  console.log('name', name);
+  // console.log('name', name);
   createUser(email, pass, name);
 };

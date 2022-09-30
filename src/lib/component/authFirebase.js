@@ -1,20 +1,22 @@
 /* eslint-disable import/no-unresolved */
-// eslint-disable-next-line quotes
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-// import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js';
-// import { app } from './lib/component/configFirebase.js';
-import { app } from './configFirebase.js';
+/* eslint-disable import/no-cycle */
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { onNavigate } from '../../main.js';
+import { firebaseConfig } from './configFirebase.js';
 
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export const createUser = (email, pass, name) => {
   createUserWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
-      //   result.user.updateProfile ({
-      //     displayName: name;
-      //   })
       const user = userCredential.user;
-      console.log(user, name);
+      console.log(user);
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      onNavigate('/principalPage');
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -22,3 +24,27 @@ export const createUser = (email, pass, name) => {
       alert(errorMessage, errorCode);
     });
 };
+
+export const authEmailPass = (email, pass) => {
+  signInWithEmailAndPassword(auth, email, pass)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
+      onNavigate('/principalPage');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage, errorCode);
+    });
+};
+
+export const signOutCount = () => {
+  signOut(auth).then(() => {
+    onNavigate('/');
+  }).catch((error) => {
+    console.log(error, 'no pudiste cerrar sesión')
+  });
+}
+
+
