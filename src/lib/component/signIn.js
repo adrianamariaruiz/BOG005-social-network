@@ -1,8 +1,12 @@
 /* eslint-disable import/no-cycle */
-// import { onNavigate } from '../../main.js';
+
 import { authEmailPass } from './authFirebase.js';
 
-export const signIn = ` 
+export const signIn = () => {
+
+  let signInContainer = document.createElement("div")
+  const signInTemplate =
+    `
       <picture>
         <img id="logo" src="./images/logo2.png" alt="logo">
       </picture>
@@ -26,15 +30,16 @@ export const signIn = `
         <a href="/signUp" class="linkSign" onclick="onNavigate()">No tienes una cuenta? Registrate</a>
       </div>`;
 
-// window.allData = function () {
-//   onNavigate('/principalPage');
-// };
+  signInContainer.innerHTML = signInTemplate
 
-//   onNavigate('/principalPage');
+  window.signInEmailPass = function () {
+    const email = document.getElementById('inputEmail').value;
+    const pass = document.getElementById('inputPassword').value;
+    console.log(email, pass);
+    authEmailPass(email, pass);
+  };
 
-window.signInEmailPass = function () {
-  const email = document.getElementById('inputEmail').value;
-  const pass = document.getElementById('inputPassword').value;
-  console.log(email, pass);
-  authEmailPass(email, pass);
-};
+  return signInContainer
+
+}
+
