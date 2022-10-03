@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 
-import { authEmailPass } from '../firebase/authFirebase.js';
+import { authEmailPass, authGoogle } from '../firebase/authFirebase.js';
 
 export const signIn = () => {
 
@@ -26,8 +26,8 @@ export const signIn = () => {
           <hr>
           </div>
           
-          <button class="btnGoogle" id="btnGoogle" type="submit"><img src="./images/google.png">Continuar con
-            Google</button>
+          <button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
+ Google</button>
             </div>
         <a href="/signUp" class="linkSign" onclick="onNavigate()">No tienes una cuenta? Registrate</a>
       </div>`;
@@ -41,7 +41,12 @@ export const signIn = () => {
     authEmailPass(email, pass);
   };
 
+  window.signInGoogle = function (){
+    authGoogle();
+  }
+
   return signInContainer
 
-}
+}//<button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
+// Google</button>
 
