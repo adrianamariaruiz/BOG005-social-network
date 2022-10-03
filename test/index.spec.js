@@ -1,8 +1,18 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { onNavigate } from '../src/main.js'
+import { mockTemplateSignIn, mockRoutes } from './mocks.js'
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+//jest.mock("../src/lib/component/authFirebase.js")
+// jest.mock("../src/lib/component/configFirebase.js");
+jest.mock('../src/lib/component/authFirebase.js', () => {
+  // return jest.fn(() => 42);
+});
+
+describe('test onNavigate', () => {
+  it('change of view singIn', () => {
+    document.body.innerHTML = '<main id="root"></main>'
+    onNavigate('/', mockRoutes);
+    console.log(document.getElementById('root').textContent.trim())
+    expect(document.getElementById('root').textContent.trim()).toEqual('vista de SignIn');
   });
 });

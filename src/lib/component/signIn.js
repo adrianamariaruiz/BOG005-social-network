@@ -1,6 +1,12 @@
-import { onNavigate } from '../../main.js';
+/* eslint-disable import/no-cycle */
 
-export const signIn = ` 
+import { authEmailPass } from './authFirebase.js';
+
+export const signIn = () => {
+
+  let signInContainer = document.createElement("div")
+  const signInTemplate =
+    `
       <picture>
         <img id="logo" src="./images/logo2.png" alt="logo">
       </picture>
@@ -8,7 +14,9 @@ export const signIn = `
         <form class="formContainer">
           <input class="inputForm" type="email" placeholder="Email" id="inputEmail">
           <input class="inputForm" type="password" placeholder="Contraseña" id="inputPassword">
-          <button class="btnSignIn" id="btnSignIn" onclick="allData()" >Iniciar Sesión</button>
+          </form>
+          <div>
+          <button class="btnSignIn" id="btnSignIn" onclick="signInEmailPass()" >Iniciar Sesión</button>
           
           <div class="optionSignIn">
           <hr>
@@ -18,14 +26,26 @@ export const signIn = `
           
           <button class="btnGoogle" id="btnGoogle" type="submit"><img src="./images/google.png">Continuar con
             Google</button>
-        </form>
+            </div>
         <a href="/signUp" class="linkSign" onclick="onNavigate()">No tienes una cuenta? Registrate</a>
       </div>`;
 
-// const btnSignIn = document.getElementById('btnSignIn');
-// console.log(btnSignIn);
-// // btnSignIn.addEventListener('click', onNavigate('/principalPage'));
+  signInContainer.innerHTML = signInTemplate
 
+  window.signInEmailPass = function () {
+    const email = document.getElementById('inputEmail').value;
+    const pass = document.getElementById('inputPassword').value;
+    console.log(email, pass);
+    authEmailPass(email, pass);
+  };
+
+  return signInContainer
+
+}
+
+<<<<<<< HEAD
 window.allData = function () {
   onNavigate('/principalPage');
 };
+=======
+>>>>>>> 3fce34f091b547b0750a064c3d46d314dc133d25
