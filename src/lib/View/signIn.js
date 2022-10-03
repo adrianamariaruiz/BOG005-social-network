@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 
-import { authEmailPass } from './authFirebase.js';
+import { authEmailPass } from '../firebase/authFirebase.js';
 
 export const signIn = () => {
 
@@ -27,7 +27,7 @@ export const signIn = () => {
           <button class="btnGoogle" id="btnGoogle" type="submit"><img src="./images/google.png">Continuar con
             Google</button>
             </div>
-        <a href="/signUp" class="linkSign" onclick="onNavigate()">No tienes una cuenta? Registrate</a>
+        <a href="/signUp" class="linkSign" >No tienes una cuenta? Registrate</a>
       </div>`;
 
   signInContainer.innerHTML = signInTemplate
@@ -43,9 +43,3 @@ export const signIn = () => {
 
 }
 
-<<<<<<< HEAD
-window.allData = function () {
-  onNavigate('/principalPage');
-};
-=======
->>>>>>> 3fce34f091b547b0750a064c3d46d314dc133d25

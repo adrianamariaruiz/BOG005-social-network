@@ -2,11 +2,7 @@
 import { onNavigate } from '../src/main.js'
 import { mockTemplateSignIn, mockRoutes } from './mocks.js'
 
-//jest.mock("../src/lib/component/authFirebase.js")
-// jest.mock("../src/lib/component/configFirebase.js");
-jest.mock('../src/lib/component/authFirebase.js', () => {
-  // return jest.fn(() => 42);
-});
+jest.mock('../src/lib/component/authFirebase.js');
 
 describe('test onNavigate', () => {
   it('change of view singIn', () => {

@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { signIn } from './lib/component/signIn.js';
-import { signUp } from './lib/component/signUp.js';
-import { principalPage } from './lib/component/principalPage.js';
+import { signIn } from './lib/View/signIn.js';
+import { signUp } from './lib/View/signUp.js';
+import { principalPage } from './lib/View/principalPage.js';
 
 // objeto de las rutas
 const routes = {
@@ -24,20 +24,18 @@ export const onNavigate = (pathname, paramRoutes = routes) => {
 
 // permite utilizar flechas del navegador
 window.onpopstate = () => {
-<<<<<<< HEAD
-  rootDiv.innerHTML = routes[window.location.pathname];
-};
-=======
-  rootDiv.replaceChildren(routes[window.location.pathname])
+  rootDiv.remove(rootDiv.firstChild)
+  rootDiv.append(routes[window.location.pathname])
+  // rootDiv.replaceChildren(routes[window.location.pathname])
 };
 
 // imprime vista iniciar sesión
 window.addEventListener('load', () => {
+  console.log('rutas',window.location.pathname)
   onNavigate(window.location.pathname)
 })
 
+// rootDiv.appendChild(routes[window.location.pathname])
 
 
 
-
->>>>>>> 3fce34f091b547b0750a064c3d46d314dc133d25

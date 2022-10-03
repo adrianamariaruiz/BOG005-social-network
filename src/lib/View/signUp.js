@@ -1,4 +1,4 @@
-import { createUser } from './authFirebase.js';
+import { createUser } from '../firebase/authFirebase.js';
 
 export const signUp = () => {
   let signUpContainer = document.createElement("div");
@@ -17,7 +17,7 @@ export const signUp = () => {
     <div>
     <button class="btnSignIn btnSignUp" id="btnSignUp"  type="submit" onclick="register()">Registrarse</button>
     </div>
-    <a href="/" class="linkSign" onclick="onNavigate('/signIn')">Ya tienes una cuenta? Inicia Sesión</a>
+    <a href="/" class="linkSign" >Ya tienes una cuenta? Inicia Sesión</a>
   </div>`;
 
   signUpContainer.innerHTML = signUpTemplate;
@@ -31,14 +31,4 @@ export const signUp = () => {
 
   return signUpContainer
 
-<<<<<<< HEAD
-window.register = function () {
-  const name = document.getElementById('inputName').value;
-  const email = document.getElementById('inputEmail').value;
-  const pass = document.getElementById('inputPassword').value;
-  console.log('name', name);
-  createUser(email, pass, name);
 }
-=======
-}
->>>>>>> 3fce34f091b547b0750a064c3d46d314dc133d25

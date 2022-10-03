@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import { app } from './configFirebase.js';
-=======
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 import { onNavigate } from '../../main.js';
 import { firebaseConfig } from './configFirebase.js';
->>>>>>> 3fce34f091b547b0750a064c3d46d314dc133d25
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

@@ -1,4 +1,4 @@
-import { signOutCount } from './authFirebase.js';
+import { signOutCount } from '../firebase/authFirebase.js';
 
 // export const principalPage = `
 // <h1>Pagina en Construcción</h1>
@@ -9,12 +9,13 @@ export const principalPage = () => {
     const mostrar = document.getElementById('root')
     // console.log(mostrar)
     let texto = document.createElement("h1")
+    texto.id = 'h1texto'
     texto.textContent = 'Pagina con nodos'
-    console.log(texto)
+    //console.log(texto)
     mostrar.appendChild(texto)
     return texto
 }
 
-window.signOutClick = function () {
-    signOutCount();
-};
+// window.signOutClick = function () {
+//     signOutCount();
+// };
