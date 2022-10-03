@@ -10,7 +10,7 @@ export const principalPage = () => {
     const mostrar = document.createElement('div')
     // console.log(mostrar)
     let texto = document.createElement("h1")
-    texto.textContent = 'Pagina con nodos'
+    texto.textContent = 'Página en construcción'
     console.log(texto)
     // mostrar.appendChild(texto)
 
