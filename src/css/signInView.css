@@ -25,12 +25,14 @@ img {
     height: 7vh;
     margin: 2%;
     border-radius: 15px;
+    padding-left: 20px ;
+    font-size: 1.5rem;
 }
 
-::placeholder {
-    padding-left: 10px;
+ /* ::placeholder {
+     padding-left: 10px; 
     font-size: 1rem;
-}
+}  */
 
 .btnSignIn,
 .btnGoogle {
@@ -107,7 +109,14 @@ img {
 }
 
 @media all and (min-width: 1024px) {
-    main {
+    /* main {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: center;
+    } */
+    .container {
         height: 100vh;
         display: flex;
         flex-wrap: wrap;

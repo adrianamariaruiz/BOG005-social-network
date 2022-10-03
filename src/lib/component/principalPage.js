@@ -1,4 +1,4 @@
-import { signOutCount } from './authFirebase.js';
+import { signOutCount } from '../firebase/authFirebase.js';
 
 // export const principalPage = `
 // <h1>Pagina en Construcción</h1>
@@ -6,12 +6,15 @@ import { signOutCount } from './authFirebase.js';
 // `;
 
 export const principalPage = () => {
-    const mostrar = document.getElementById('root')
+    // const mostrar = document.getElementById('root')
+    const mostrar = document.createElement('div')
     // console.log(mostrar)
     let texto = document.createElement("h1")
-    texto.textContent = 'Pagina con nodos'
+    texto.textContent = 'Página en construcción'
     console.log(texto)
-    mostrar.appendChild(texto)
+    // mostrar.appendChild(texto)
+
+    mostrar.innerHTML = texto
     return texto
 }
 
