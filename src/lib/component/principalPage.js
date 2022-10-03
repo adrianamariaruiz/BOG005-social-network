@@ -7,11 +7,12 @@ import { signOutCount } from './authFirebase.js';
 
 export const principalPage = () => {
     const mostrar = document.getElementById('root')
-    console.log(mostrar)
-    let texto = document.createElement('h1')
+    // console.log(mostrar)
+    let texto = document.createElement("h1")
     texto.textContent = 'Pagina con nodos'
     console.log(texto)
     mostrar.appendChild(texto)
+    return texto
 }
 
 window.signOutClick = function () {

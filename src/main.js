@@ -5,12 +5,13 @@ import { principalPage } from './lib/component/principalPage.js';
 
 // objeto de las rutas
 const routes = {
-  '/': signIn,
-  '/signUp': signUp,
+  '/': signIn(),
+  '/signUp': signUp(),
   '/principalPage': principalPage(),
 };
 
 const rootDiv = document.getElementById('root');
+
 // permite navegar atraves de las ruta
 export const onNavigate = (pathname, paramRoutes = routes) => {
   window.history.pushState(
@@ -18,17 +19,20 @@ export const onNavigate = (pathname, paramRoutes = routes) => {
     pathname,
     window.location.origin + pathname,
   );
-  // rootDiv.innerHTML = paramRoutes[pathname];
-  document.getElementById('root').innerHTML = paramRoutes[pathname];
+  rootDiv.replaceChildren(paramRoutes[pathname])
 };
 
-// // imprime vista iniciar sesión
-// rootDiv.innerHTML = routes[window.location.pathname];
+// permite utilizar flechas del navegador
+window.onpopstate = () => {
+  rootDiv.replaceChildren(routes[window.location.pathname])
+};
+
+// imprime vista iniciar sesión
 window.addEventListener('load', () => {
   onNavigate(window.location.pathname)
 })
 
-// // // permite utilizar flechas del navegador
-window.onpopstate = () => {
-  rootDiv.innerHTML = routes[window.location.pathname];
-};
+
+
+
+
