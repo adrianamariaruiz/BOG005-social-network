@@ -1,10 +1,12 @@
 /* eslint-disable import/no-cycle */
 
-import { authEmailPass } from './authFirebase.js';
+import { authEmailPass } from '../firebase/authFirebase.js';
 
 export const signIn = () => {
 
   let signInContainer = document.createElement("div")
+  signInContainer.classList.add('container')
+  // let signInContainer = document.getElementById('root')
   const signInTemplate =
     `
       <picture>
