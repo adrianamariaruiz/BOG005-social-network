@@ -1,10 +1,16 @@
 /* eslint-disable import/no-cycle */
 
+<<<<<<< HEAD:src/lib/View/signIn.js
 import { authEmailPass } from '../firebase/authFirebase.js';
+=======
+import { authEmailPass, authGoogle } from '../firebase/authFirebase.js';
+>>>>>>> 9e1fd385581e8e5966351b64b0e209b97b50b627:src/lib/component/signIn.js
 
 export const signIn = () => {
 
   let signInContainer = document.createElement("div")
+  signInContainer.classList.add('container')
+  // let signInContainer = document.getElementById('root')
   const signInTemplate =
     `
       <picture>
@@ -24,8 +30,8 @@ export const signIn = () => {
           <hr>
           </div>
           
-          <button class="btnGoogle" id="btnGoogle" type="submit"><img src="./images/google.png">Continuar con
-            Google</button>
+          <button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
+ Google</button>
             </div>
         <a href="/signUp" class="linkSign" >No tienes una cuenta? Registrate</a>
       </div>`;
@@ -39,7 +45,12 @@ export const signIn = () => {
     authEmailPass(email, pass);
   };
 
+  window.signInGoogle = function (){
+    authGoogle();
+  }
+
   return signInContainer
 
-}
+}//<button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
+// Google</button>
 
