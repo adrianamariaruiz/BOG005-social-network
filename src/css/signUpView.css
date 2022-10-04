@@ -1,6 +1,8 @@
 .formTittle{
     font-size: 1.3rem;
     margin-bottom: 2%;
+    color: #000000;
+  text-shadow: 2px 2px 4px #31c6c6;
 }
 .btnSignUp{
     margin-bottom: 5%;
