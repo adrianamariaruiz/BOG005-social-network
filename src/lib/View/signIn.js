@@ -1,10 +1,6 @@
 /* eslint-disable import/no-cycle */
 
-<<<<<<< HEAD:src/lib/View/signIn.js
-import { authEmailPass } from '../firebase/authFirebase.js';
-=======
 import { authEmailPass, authGoogle } from '../firebase/authFirebase.js';
->>>>>>> 9e1fd385581e8e5966351b64b0e209b97b50b627:src/lib/component/signIn.js
 
 export const signIn = () => {
 
