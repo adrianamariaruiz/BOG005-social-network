@@ -24,9 +24,8 @@ export const onNavigate = (pathname, paramRoutes = routes) => {
 
 // permite utilizar flechas del navegador
 window.onpopstate = () => {
-  rootDiv.remove(rootDiv.firstChild)
-  rootDiv.append(routes[window.location.pathname])
-  // rootDiv.replaceChildren(routes[window.location.pathname])
+
+  rootDiv.replaceChildren(routes[window.location.pathname])
 };
 
 // imprime vista iniciar sesión
