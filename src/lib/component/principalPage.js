@@ -1,5 +1,6 @@
+
 import { signOutCount } from '../firebase/authFirebase.js';
-import { savePost } from '../firebase/configFirestore.js';
+import { getPosts, savePost } from '../firebase/configFirestore.js';
 
 export const principalPage = () => {
     let principalPageContainer = document.createElement("div")
@@ -8,22 +9,47 @@ export const principalPage = () => {
         <header class="headerContainer">
         <button class="btnSignOut" onClick="signOutClick()">Cerrar Sesión</button>
         </header>
-        <div class=inputPostContainer>
-        <textarea id='inputPost' type='text' placeholder='Qué estás pensando...' ></textarea>
+        <form class="formContainer" type="submit" id="formContainer">
+        <input id='titlePost' type='text' placeholder='Nombra tu receta...'>
+        <textarea id='inputPost' type='text' placeholder='Describe tu receta...' ></textarea>
+        </form>
         <button class="btnPost" type='text' onclick="createPost()">Publicar</button>
-        </div>
+
         `
 
     principalPageContainer.innerHTML = principalPageTemplate
 
-    window.signOutClick = function () {
-        signOutCount();
-    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const querySnapshot = getPosts()
+        console.log(querySnapshot)
+    })
+
 
     window.createPost = function () {
+        const titlePost = document.getElementById('titlePost').value;
         const infoPost = document.getElementById('inputPost').value;
-        console.log('funciona el', infoPost);
-        savePost(infoPost);
+
+        console.log('funciona el', infoPost, 'y el', titlePost);
+        savePost(titlePost, infoPost);
+        const formContainer = document.getElementById('formContainer')
+        formContainer.reset()
+    };
+
+    // const formContainer = document.getElementById('formContainer')
+
+    // formContainer.addEventListener("submit", (e) => {
+    //     e.preventDefault()
+    //     const titlePost = document.getElementById('titlePost').value;
+    //     const infoPost = document.getElementById('inputPost').value;
+    //     savePost(titlePost, infoPost);
+    // formContainer.reset()
+
+    // })
+
+
+    window.signOutClick = function () {
+        signOutCount();
     };
 
     return principalPageContainer
