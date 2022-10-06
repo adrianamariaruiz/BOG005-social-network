@@ -5,7 +5,8 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmail
 import { onNavigate } from '../../main.js';
 import { firebaseConfig } from './configFirebase.js';
 
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export const createUser = (email, pass, name) => {
@@ -39,27 +40,27 @@ export const authEmailPass = (email, pass) => {
     });
 };
 
-export const authGoogle = ()=>{
+export const authGoogle = () => {
   const provider = new GoogleAuthProvider();
-signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // ...
-    onNavigate('/principalPage');
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // ...
+      onNavigate('/principalPage');
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
 }
 
 export const signOutCount = () => {
