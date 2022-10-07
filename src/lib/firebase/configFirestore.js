@@ -8,10 +8,11 @@ export const savePost = (title, description) => {
     addDoc(collection(db, "posts"), { title, description });
 }
 
-export const getPosts = async() => {
+export const getPosts = async () => {
     const querySnapshot = await getDocs(collection(db, "posts"));
-    console.log('hola adri',querySnapshot);
+    const docData = []
     querySnapshot.forEach((doc) => {
-        console.log(doc.data());
+        docData.push(doc.data())
     });
+    return docData;
 }
