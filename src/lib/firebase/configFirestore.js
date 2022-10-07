@@ -2,12 +2,16 @@ import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.c
 import { app } from '../firebase/authFirebase.js';
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 export const savePost = (title, description) => {
     addDoc(collection(db, "posts"), { title, description });
 }
 
-export const getPosts = () => {
-    getDocs(collection(db, "posts"))
+export const getPosts = async() => {
+    const querySnapshot = await getDocs(collection(db, "posts"));
+    console.log('hola adri',querySnapshot);
+    querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+    });
 }
