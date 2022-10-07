@@ -1,8 +1,8 @@
 
 // import { async } from 'regenerator-runtime';
 import { signOutCount } from '../firebase/authFirebase.js';
-import { savePost, db } from '../firebase/configFirestore.js';
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+import { savePost, getPosts } from '../firebase/configFirestore.js';
+// import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
 // export const principalPage = () => {
 //     let principalPageContainer = document.createElement("div")
@@ -79,14 +79,15 @@ export const principalPage = () => {
 
     const titlePost = document.createElement('input')
     titlePost.classList = 'titlePost'
-    titlePost.type = 'texto'
+    titlePost.type = 'email'
     titlePost.setAttribute('placeholder', 'Nombra tu receta...');
-    //   titlePost.setAttribute('required', '');
+    titlePost.setAttribute('required', '');
 
     const inputPost = document.createElement('textarea');
     inputPost.classList = 'inputPost'
     inputPost.setAttribute('placeholder', 'Describe tu receta...')
-    //   inputPost.setAttribute('required', '');
+    inputPost.setAttribute('required', '');
+    
 
     const btnPost = document.createElement('button')
     btnPost.classList = 'btnPost'
@@ -96,13 +97,15 @@ export const principalPage = () => {
     postContainer.classList ='postContainer'
 
 
-    window.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener('DOMContentLoaded', () => {
         // const querySnapshot = await getPosts();
-        const querySnapshot = await getDocs(collection(db, "posts"));
-        console.log(querySnapshot);
-        querySnapshot.forEach((doc) => {
-            console.log(doc.data());
-        });
+        // const querySnapshot = await getDocs(collection(db, "posts"));
+        // console.log(querySnapshot);
+        // querySnapshot.forEach((doc) => {
+        //     console.log(doc.data());
+        // });
+        
+        const data = getPosts()
     });
 
 
