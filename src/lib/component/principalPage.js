@@ -1,6 +1,6 @@
 
 import { signOutCount } from '../firebase/authFirebase.js';
-import { savePost, onGetPosts} from '../firebase/configFirestore.js';
+import { savePost, onGetPosts, deletePost} from '../firebase/configFirestore.js';
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
 // export const principalPage = () => {
@@ -118,17 +118,21 @@ export const principalPage = () => {
 
     // })
 
-    const printPost = (doc) => {
+    const printPost = (dataPost, dataId) => {
         const task = document.createElement('div');
-        task.classList = 'task'
+        task.classList = 'task';
         const titleTask = document.createElement('h3');
-        titleTask.classList = 'titleTask'
-        titleTask.textContent = doc.title
+        titleTask.classList = 'titleTask';
+        titleTask.textContent = dataPost.title;
         const descriptionTask = document.createElement('p');
-        descriptionTask.classList = 'descriptionTask'
-        descriptionTask.textContent = doc.description
+        descriptionTask.classList = 'descriptionTask';
+        descriptionTask.textContent = dataPost.description;
+        const btnDelete = document.createElement('button');
+        btnDelete.classList = 'btnDelete';
+        btnDelete.textContent = 'X';
+        btnDelete.setAttribute('data-id', dataId)
 
-        task.append(titleTask, descriptionTask)
+        task.append(titleTask, descriptionTask, btnDelete)
         return task
     }
 
@@ -136,12 +140,21 @@ export const principalPage = () => {
         // const querySnapshot = await getPosts();
         onGetPosts((querySnapshot)=>{
             postContainer.innerHTML = ""
-        querySnapshot.forEach(doc => {
-            const data = doc.data()
-            postContainer.append(printPost(data))
+        querySnapshot.forEach(infoPost => {
+            const dataPost = infoPost.data()
+            const dataId = infoPost.id
+            postContainer.append(printPost(dataPost, dataId))
         })
+
+        const arrayBtn = postContainer.querySelectorAll('.btnDelete')
+    //    console.log('botones',arrayBtn);
+    arrayBtn.forEach(btn => {
+        btn.addEventListener('click', (event)=> {
+    deletePost(event.target.dataset.id);
+        })
+    })
         
-        console.log('post container',postContainer);
+        // console.log('post container',postContainer);
     })
     })
 
