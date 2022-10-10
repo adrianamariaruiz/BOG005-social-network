@@ -8,7 +8,7 @@ export const savePost = (title, description) => {
     addDoc(collection(db, "posts"), { title, description });
 }
 
-export const getPosts = async () => {
+export const getPost = async () => {
     const querySnapshot = await getDocs(collection(db, "posts"));
     const docData = []
     querySnapshot.forEach((doc) => {

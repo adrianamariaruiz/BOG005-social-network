@@ -1,63 +1,6 @@
 
 import { signOutCount } from '../firebase/authFirebase.js';
-import { savePost, getPosts } from '../firebase/configFirestore.js';
-// import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
-
-// export const principalPage = () => {
-//     let principalPageContainer = document.createElement("div")
-//     const principalPageTemplate =
-//         `
-//         <header class="headerContainer">
-//         <button class="btnSignOut" onClick="signOutClick()">Cerrar Sesión</button>
-//         </header>
-//         <form class="formContainer" type="submit" id="formContainer">
-//         <input id='titlePost' type='text' placeholder='Nombra tu receta...'>
-//         <textarea id='inputPost' type='text' placeholder='Describe tu receta...' ></textarea>
-//         </form>
-//         <button class="btnPost" type='text' onclick="createPost()">Publicar</button>
-
-//         `
-
-//     principalPageContainer.innerHTML = principalPageTemplate
-
-
-//     window.addEventListener('DOMContentLoaded', () => {
-//         const querySnapshot = getPosts()
-//         console.log(querySnapshot)
-//     })
-
-
-//     window.createPost = function () {
-//         const titlePost = document.getElementById('titlePost').value;
-//         const infoPost = document.getElementById('inputPost').value;
-
-//         console.log('funciona el', infoPost, 'y el', titlePost);
-//         savePost(titlePost, infoPost);
-//         const formContainer = document.getElementById('formContainer')
-//         formContainer.reset()
-//     };
-
-//     // const formContainer = document.getElementById('formContainer')
-
-//     // formContainer.addEventListener("submit", (e) => {
-//     //     e.preventDefault()
-//     //     const titlePost = document.getElementById('titlePost').value;
-//     //     const infoPost = document.getElementById('inputPost').value;
-//     //     savePost(titlePost, infoPost);
-//     // formContainer.reset()
-
-//     // })
-
-
-//     window.signOutClick = function () {
-//         signOutCount();
-//     };
-
-//     return principalPageContainer
-// }
-
-
-
+import { savePost, getPost } from '../firebase/configFirestore.js';
 
 export const principalPage = () => {
     const wall = document.createElement('div')
@@ -78,7 +21,7 @@ export const principalPage = () => {
     sectionContainer.classList = 'sectionContainer'
 
     const formContainer = document.createElement('form')
-    formContainer.classList = 'formContainer'
+    formContainer.classList = 'formContainerPrincipalPage'
 
     const titlePost = document.createElement('input')
     titlePost.classList = 'titlePost'
@@ -105,21 +48,14 @@ export const principalPage = () => {
 
 
     window.addEventListener('DOMContentLoaded', () => {
-        // const querySnapshot = await getPosts();
-        // const querySnapshot = await getDocs(collection(db, "posts"));
-        // console.log(querySnapshot);
-        // querySnapshot.forEach((doc) => {
-        //     console.log(doc.data());
-        // });
-        const data = getPosts().then(res => {
+        const data = getPost().then(res => {
             console.log('data', res);
             res.forEach((element) => {
-                // console.log('este es el titulo del post', doc.title)
-                // console.log('este es la descripcion del post', doc.description)
                 printPost(element);
             })
         });
     })
+
 
     const printPost = (element) => {
         const task = document.createElement('div');
@@ -133,28 +69,23 @@ export const principalPage = () => {
 
         task.append(titleTask, descriptionTask)
         postContainer.append(task)
+        // console.log(postContainer)
         return postContainer
     }
 
+    // // aca toca traer lo que tenia mas lo nuevo
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
-        const pruebatitulo = titlePost.value
-        // const titlePost = document.getElementById('titlePost').textContent;
-        // console.log('titulo', titlePost);
-        // const infoPost = document.getElementById('inputPost').textContent;
-        const pruebadesc = inputPost.value
-        savePost(pruebatitulo, pruebadesc);
-        formContainer.reset()
 
+        const titlePost = document.getElementById('titlePost')
+
+        savePost()
+        formContainer.reset()
     })
 
     btnSignOut.addEventListener('click', () => {
         signOutCount();
     })
-
-    // window.signOutClick = function () {
-    //     //         signOutCount();
-    //     //     };
 
     header.append(imageLogo, btnSignOut)
     formContainer.append(titlePost, inputPost, btnPost)
@@ -162,6 +93,7 @@ export const principalPage = () => {
     wall.append(header, sectionContainer, footer)
     return wall
 }
+
 
 // window.addEventListener('DOMContentLoaded', () => {
 //     // const querySnapshot = await getPosts();
