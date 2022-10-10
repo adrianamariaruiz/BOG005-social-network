@@ -1,6 +1,6 @@
 
 import { signOutCount } from '../firebase/authFirebase.js';
-import { savePost, getPosts } from '../firebase/configFirestore.js';
+import { savePost, onGetPosts} from '../firebase/configFirestore.js';
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
 // export const principalPage = () => {
@@ -78,7 +78,7 @@ export const principalPage = () => {
     sectionContainer.classList = 'sectionContainer'
 
     const formContainer = document.createElement('form')
-    formContainer.classList = 'formContainer'
+    formContainer.classList = 'formContainer-principalPage'
 
     const titlePost = document.createElement('input')
     titlePost.classList = 'titlePost'
@@ -86,10 +86,11 @@ export const principalPage = () => {
     titlePost.setAttribute('placeholder', 'Nombra tu receta...');
     titlePost.setAttribute('required', '');
 
+
     const inputPost = document.createElement('textarea');
     inputPost.classList = 'inputPost'
     inputPost.setAttribute('placeholder', 'Describe tu receta...')
-    inputPost.setAttribute('required', '');
+    inputPost.setAttribute('required','');
 
 
     const btnPost = document.createElement('button')
@@ -104,57 +105,57 @@ export const principalPage = () => {
     footer.classList = 'footer'
 
 
-    window.addEventListener('DOMContentLoaded', () => {
-        // const querySnapshot = await getPosts();
-        // const querySnapshot = await getDocs(collection(db, "posts"));
-        // console.log(querySnapshot);
-        // querySnapshot.forEach((doc) => {
-        //     console.log(doc.data());
-        // });
-        const data = getPosts().then(res => {
-            console.log('data', res);
-            res.forEach((element) => {
-                // console.log('este es el titulo del post', doc.title)
-                // console.log('este es la descripcion del post', doc.description)
-                printPost(element);
-            })
-        });
-    })
+    // window.addEventListener('DOMContentLoaded', () => {
+    //    onGetPosts(getPosts().then(res => {
+    //         console.log('data', res);
+    //         res.forEach((doc) => {
+    //             console.log('este es el titulo del post', doc.title)
+    //             console.log('este es la descripcion del post', doc.description)
+    //             printPost(doc);
+    //         })
+    //     }))
 
-    const printPost = (element) => {
+
+    // })
+
+    const printPost = (doc) => {
         const task = document.createElement('div');
         task.classList = 'task'
         const titleTask = document.createElement('h3');
         titleTask.classList = 'titleTask'
-        titleTask.textContent = element.title
+        titleTask.textContent = doc.title
         const descriptionTask = document.createElement('p');
         descriptionTask.classList = 'descriptionTask'
-        descriptionTask.textContent = element.description
+        descriptionTask.textContent = doc.description
 
         task.append(titleTask, descriptionTask)
-        postContainer.append(task)
-        return postContainer
+        return task
     }
+
+    window.addEventListener('DOMContentLoaded', ()=>{
+        // const querySnapshot = await getPosts();
+        onGetPosts((querySnapshot)=>{
+            postContainer.innerHTML = ""
+        querySnapshot.forEach(doc => {
+            const data = doc.data()
+            postContainer.append(printPost(data))
+        })
+        
+        console.log('post container',postContainer);
+    })
+    })
 
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
         const pruebatitulo = titlePost.value
-        // const titlePost = document.getElementById('titlePost').textContent;
-        // console.log('titulo', titlePost);
-        // const infoPost = document.getElementById('inputPost').textContent;
         const pruebadesc = inputPost.value
         savePost(pruebatitulo, pruebadesc);
         formContainer.reset()
-
     })
 
     btnSignOut.addEventListener('click', () => {
         signOutCount();
     })
-
-    // window.signOutClick = function () {
-    //     //         signOutCount();
-    //     //     };
 
     header.append(imageLogo, btnSignOut)
     formContainer.append(titlePost, inputPost, btnPost)
