@@ -60,6 +60,7 @@ import { savePost, onGetPosts, deletePost, getPost, updatePost } from '../fireba
 
 
 export const principalPage = () => {
+
     const wall = document.createElement('div')
     wall.classList = 'wall'
 
@@ -76,6 +77,13 @@ export const principalPage = () => {
 
     const btnSignOut = document.createElement("button")
     // btnSignOut.textContent = 'Cerrar Sesion'
+
+    // btnSignOut.classList = <i class="fa-solid fa-right-from-bracket"></i>
+    // carita para el like <i class="fa-solid fa-face-smile-tongue"></i>
+    // carita para el like <i class="fa-sharp fa-solid fa-face-smile-tongue"></i>
+    // basurero <i class="fa-solid fa-trash-can"></i>
+    // editar <i class="fa-solid fa-pen-to-square"></i>
+
     btnSignOut.classList = 'btn_SignOut'
 
     const sectionContainer = document.createElement('section')

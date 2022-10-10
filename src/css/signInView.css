@@ -16,9 +16,11 @@ img {
 .form-container-signIn {
     flex-direction: column;
     text-align: center;
+    font-family: 'Simonetta', cursive;
 }
 
 .inputForm {
+   
     background-color: #FBF6F0;
     border: solid 2px #65C7C7;
     width: 80%;

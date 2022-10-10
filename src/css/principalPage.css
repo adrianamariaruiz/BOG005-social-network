@@ -8,6 +8,11 @@
 #ECC5FB
 */
 
+/* body{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 70px;
+} */
 .header {
     padding: 5px;
     background-color: #65C7C7;
@@ -108,7 +113,9 @@
 .footer {
     background-color: #65C7C7;
     height: 70px;
-    width: auto;
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
 }
 
 
