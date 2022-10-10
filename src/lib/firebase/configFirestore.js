@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+import { getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 import { app } from '../firebase/authFirebase.js';
 
 // Initialize Cloud Firestore and get a reference to the service
@@ -26,3 +26,7 @@ export const savePost = (title, description) => {
 export const onGetPosts = (callback)=> onSnapshot(collection(db, 'posts'), callback)
 
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id))
+
+export const getPost = (id)=>getDoc(doc(db, 'posts', id))
+
+export const updatePost = (id, newFields) => updateDoc(doc(db, 'posts', id), newFields)

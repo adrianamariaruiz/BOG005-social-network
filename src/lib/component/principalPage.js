@@ -1,6 +1,6 @@
 
 import { signOutCount } from '../firebase/authFirebase.js';
-import { savePost, onGetPosts, deletePost} from '../firebase/configFirestore.js';
+import { savePost, onGetPosts, deletePost, getPost, updatePost } from '../firebase/configFirestore.js';
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
 // export const principalPage = () => {
@@ -68,10 +68,14 @@ export const principalPage = () => {
 
     const imageLogo = document.createElement("img")
     imageLogo.classList = 'imageLogo'
-    imageLogo.setAttribute('src', './images/logoHeader.png');
+    imageLogo.setAttribute('src', './images/logoHeader2.png');
+
+    const imageTitle = document.createElement("img")
+    imageTitle.classList = 'imageTitle'
+    imageTitle.setAttribute('src', './images/kids_food.png');
 
     const btnSignOut = document.createElement("button")
-    btnSignOut.textContent = 'Cerrar sesión'
+    // btnSignOut.textContent = 'Cerrar Sesion'
     btnSignOut.classList = 'btn_SignOut'
 
     const sectionContainer = document.createElement('section')
@@ -90,7 +94,7 @@ export const principalPage = () => {
     const inputPost = document.createElement('textarea');
     inputPost.classList = 'inputPost'
     inputPost.setAttribute('placeholder', 'Describe tu receta...')
-    inputPost.setAttribute('required','');
+    inputPost.setAttribute('required', '');
 
 
     const btnPost = document.createElement('button')
@@ -131,38 +135,67 @@ export const principalPage = () => {
         btnDelete.classList = 'btnDelete';
         btnDelete.textContent = 'X';
         btnDelete.setAttribute('data-id', dataId)
+        const btnEdit = document.createElement('button');
+        btnEdit.classList = 'btnEdit';
+        btnEdit.textContent = 'Editar';
+        btnEdit.setAttribute('data-id', dataId)
 
-        task.append(titleTask, descriptionTask, btnDelete)
+        task.append(titleTask, descriptionTask, btnEdit, btnDelete)
         return task
-    }
+    }   
 
-    window.addEventListener('DOMContentLoaded', ()=>{
+    let editStatus = false; 
+    let idPost = '';
+
+    window.addEventListener('DOMContentLoaded', () => {
         // const querySnapshot = await getPosts();
-        onGetPosts((querySnapshot)=>{
+        onGetPosts((querySnapshot) => {
             postContainer.innerHTML = ""
-        querySnapshot.forEach(infoPost => {
-            const dataPost = infoPost.data()
-            const dataId = infoPost.id
-            postContainer.append(printPost(dataPost, dataId))
-        })
+            querySnapshot.forEach(infoPost => {
+                const dataPost = infoPost.data()
+                const dataId = infoPost.id
+                postContainer.append(printPost(dataPost, dataId))
+            })
 
-        const arrayBtn = postContainer.querySelectorAll('.btnDelete')
-    //    console.log('botones',arrayBtn);
-    arrayBtn.forEach(btn => {
-        btn.addEventListener('click', (event)=> {
-    deletePost(event.target.dataset.id);
+            const arrayDeleteBtn = postContainer.querySelectorAll('.btnDelete')
+            //    console.log('botones',arrayBtn);
+            arrayDeleteBtn.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    deletePost(event.target.dataset.id);
+                })
+            })
+
+            const arrayEditBtn = postContainer.querySelectorAll('.btnEdit')
+            arrayEditBtn.forEach(btn=>{
+                btn.addEventListener('click', async (event) => {
+                    // console.log(event.target.dataset.id);
+                    const dataEdit = await getPost(event.target.dataset.id)
+                    // console.log('data edit', dataEdit.data());
+                    const postEdit = dataEdit.data()
+                    formContainer.querySelector('.titlePost').value = postEdit.title
+                    formContainer.querySelector('.inputPost').value = postEdit.description
+
+                    editStatus = true;
+                    idPost= event.target.dataset.id
+                    formContainer.querySelector('.btnPost').innerText= 'Editar'
+                })
+            })
+
+            // console.log('post container',postContainer);
         })
-    })
-        
-        // console.log('post container',postContainer);
-    })
     })
 
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
         const pruebatitulo = titlePost.value
         const pruebadesc = inputPost.value
-        savePost(pruebatitulo, pruebadesc);
+        if(!editStatus){
+            savePost(pruebatitulo, pruebadesc);
+        } else {
+            updatePost(idPost, {title: titlePost.value, description: inputPost.value})
+            editStatus= false;
+        }
+        
         formContainer.reset()
     })
 
@@ -170,7 +203,7 @@ export const principalPage = () => {
         signOutCount();
     })
 
-    header.append(imageLogo, btnSignOut)
+    header.append(imageLogo, imageTitle, btnSignOut)
     formContainer.append(titlePost, inputPost, btnPost)
     sectionContainer.append(formContainer, postContainer)
     wall.append(header, sectionContainer, footer)
