@@ -6,7 +6,16 @@ export const mockTemplateSignIn = () => {
     return mockSignInContainer
 }
 
+export const mockTemplateSignUp = () => {
+    let mockSignUpContainer = document.createElement("div")
+    const mockTemplate = `<h1>vista de SignUp</h1>`
+    
+    mockSignUpContainer.innerHTML = mockTemplate
+    return mockSignUpContainer
+}
+
 
 export const mockRoutes = {
     '/': mockTemplateSignIn(),
+    '/signUp':mockTemplateSignUp(),
 };
