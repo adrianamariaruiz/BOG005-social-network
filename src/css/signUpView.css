@@ -1,8 +1,10 @@
 .formTittle{
+    font-family: 'Simonetta', cursive;
     font-size: 1.3rem;
     margin-bottom: 2%;
 }
 .btnSignUp{
+    font-family: 'Simonetta', cursive;
     margin-bottom: 5%;
 }
 
@@ -15,6 +17,7 @@
 
 @media all and (min-width: 1024px){
     .form-container-signIn{
+        font-family: 'Simonetta', cursive;
         width: 40%;
     }
 }

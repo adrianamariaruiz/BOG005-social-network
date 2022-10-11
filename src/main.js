@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { signIn } from './lib/component/signIn.js';
-import { signUp } from './lib/component/signUp.js';
-import { principalPage } from './lib/component/principalPage.js';
+import { signIn } from './lib/View/signIn.js';
+import { signUp } from './lib/View/signUp.js';
+import { principalPage } from './lib/View/principalPage.js';
 
 function elementRoot() {
   if (document.getElementById('rootDiv') == null) {
@@ -37,10 +37,11 @@ window.onpopstate = () => {
 
 // imprime vista iniciar sesión
 window.addEventListener('load', () => {
+  console.log('rutas',window.location.pathname)
   onNavigate(window.location.pathname)
 })
 
-
+// rootDiv.appendChild(routes[window.location.pathname])
 
 
 

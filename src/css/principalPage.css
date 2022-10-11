@@ -14,6 +14,7 @@
     padding-bottom: 70px;
 } */
 .header {
+    font-family: 'Simonetta', cursive;
     padding: 5px;
     background-color: #65C7C7;
     height: 90px;
@@ -36,6 +37,7 @@
 
 .btn_SignOut,
 .btnPost {
+    font-family: 'Simonetta', cursive;
     background-color: #ECC5FB;
     border: solid 2px #f3f1dc;
     height: 30px;
