@@ -6,6 +6,7 @@ body {
     background-color: #CDF0EA;
     text-align: center;
     font-size: 1rem;
+    font-family: 'Simonetta', cursive;
 }
 
 img {
@@ -36,6 +37,7 @@ img {
 
 .btnSignIn,
 .btnGoogle {
+    font-family: 'Simonetta', cursive;
     background-color: #65C7C7;
     border: solid 2px #FBF6F0;
     height: 8vh;
@@ -75,11 +77,13 @@ img {
 
 .linkSign,
 .optionSignIn p {
+    font-family: 'Simonetta', cursive;
     color: #007878;
     padding: 10px;
 }
 
 .optionSignIn hr {
+    font-family: 'Simonetta', cursive;
     width: 30%;
     border: solid 0.3px #007878;
 }
