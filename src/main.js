@@ -3,6 +3,13 @@ import { signIn } from './lib/component/signIn.js';
 import { signUp } from './lib/component/signUp.js';
 import { principalPage } from './lib/component/principalPage.js';
 
+function elementRoot() {
+  if (document.getElementById('rootDiv') == null) {
+    document.body.innerHTML = '<main id="root"></main>';
+  }
+}
+elementRoot();
+
 // objeto de las rutas
 const routes = {
   '/': signIn(),
