@@ -100,7 +100,7 @@
 
 .task {
     /* border: solid 1px #007878; */
-    background-color: #D9D9D9;
+    background-color: #ebeaea;
     box-shadow: 2px 1px 5px #0000005b;
     margin: 8px;
     padding: 5px;
@@ -108,6 +108,28 @@
 
 .btnDelete {
     border-radius: 50%;
+}
+
+.btnLike {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.btnLike i {
+    font-size: 20px;
+}
+
+.like-on {
+    color: #007878;
+}
+
+.inpuLikes {
+    width: 50px;
+    background-color: transparent;
+    border-style: none;
+    color: #007878;
 }
 
 .footer {
@@ -127,7 +149,7 @@
         width: auto;
     }
 
-    .btn_SignOut::before{
+    .btn_SignOut::before {
         content: 'Cerrar Sesión';
     }
 }
