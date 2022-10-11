@@ -101,7 +101,6 @@ export const principalPage = () => {
     btnPost.classList = 'btnPost'
     btnPost.textContent = 'Publicar'
 
-
     const postContainer = document.createElement('div')
     postContainer.classList = 'postContainer'
 
@@ -125,22 +124,38 @@ export const principalPage = () => {
     const printPost = (dataPost, dataId) => {
         const task = document.createElement('div');
         task.classList = 'task';
+
         const titleTask = document.createElement('h3');
         titleTask.classList = 'titleTask';
         titleTask.textContent = dataPost.title;
+
         const descriptionTask = document.createElement('p');
         descriptionTask.classList = 'descriptionTask';
         descriptionTask.textContent = dataPost.description;
+
         const btnDelete = document.createElement('button');
         btnDelete.classList = 'btnDelete';
         btnDelete.textContent = 'X';
         btnDelete.setAttribute('data-id', dataId)
+
+        // <i class="fa-regular fa-circle-xmark"></i>
+
         const btnEdit = document.createElement('button');
         btnEdit.classList = 'btnEdit';
         btnEdit.textContent = 'Editar';
         btnEdit.setAttribute('data-id', dataId)
 
-        task.append(titleTask, descriptionTask, btnEdit, btnDelete)
+        // <i class="fa-solid fa-carrot"></i>
+        // <i class="fa-solid fa-face-grin-hearts"></i>
+        const btnLike = document.createElement('button');
+        btnLike.className = 'btnLike';
+        btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
+
+        const inpuLikes = document.createElement('input')
+        inpuLikes.className = 'inpuLikes'
+        inpuLikes.setAttribute('value', 0)
+
+        task.append(titleTask, descriptionTask, btnLike, inpuLikes, btnEdit, btnDelete)
         return task
     }
 
@@ -178,6 +193,19 @@ export const principalPage = () => {
                     editStatus = true;
                     idPost = event.target.dataset.id
                     formContainer.querySelector('.btnPost').innerText = 'Editar'
+                })
+            })
+
+            const btnLikes = postContainer.querySelectorAll('.btnLike')
+            btnLikes.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    // console.log('funciona el btnLikes')
+                    event.target.classList.toggle('like-on')
+
+                    // funcion de conteo
+                    let inputLikesValue = document.querySelector('.inpuLikes').value
+                    console.log(inputLikesValue)
+                    inputLikesValue = parseInt(inputLikesValue) + 1
                 })
             })
 
