@@ -8,6 +8,11 @@
 #ECC5FB
 */
 
+/* body{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 70px;
+} */
 .header {
     font-family: 'Simonetta', cursive;
     padding: 5px;
@@ -97,7 +102,7 @@
 
 .task {
     /* border: solid 1px #007878; */
-    background-color: #D9D9D9;
+    background-color: #ebeaea;
     box-shadow: 2px 1px 5px #0000005b;
     margin: 8px;
     padding: 5px;
@@ -107,10 +112,34 @@
     border-radius: 50%;
 }
 
+.btnLike {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.btnLike i {
+    font-size: 20px;
+}
+
+.like-on {
+    color: #007878;
+}
+
+.inpuLikes {
+    width: 50px;
+    background-color: transparent;
+    border-style: none;
+    color: #007878;
+}
+
 .footer {
     background-color: #65C7C7;
     height: 70px;
-    width: auto;
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
 }
 
 
@@ -122,7 +151,7 @@
         width: auto;
     }
 
-    .btn_SignOut::before{
+    .btn_SignOut::before {
         content: 'Cerrar Sesión';
     }
 }

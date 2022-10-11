@@ -60,6 +60,7 @@ import { savePost, onGetPosts, deletePost, getPost, updatePost } from '../fireba
 
 
 export const principalPage = () => {
+
     const wall = document.createElement('div')
     wall.classList = 'wall'
 
@@ -76,6 +77,13 @@ export const principalPage = () => {
 
     const btnSignOut = document.createElement("button")
     // btnSignOut.textContent = 'Cerrar Sesion'
+
+    // btnSignOut.classList = <i class="fa-solid fa-right-from-bracket"></i>
+    // carita para el like <i class="fa-solid fa-face-smile-tongue"></i>
+    // carita para el like <i class="fa-sharp fa-solid fa-face-smile-tongue"></i>
+    // basurero <i class="fa-solid fa-trash-can"></i>
+    // editar <i class="fa-solid fa-pen-to-square"></i>
+
     btnSignOut.classList = 'btn_SignOut'
 
     const sectionContainer = document.createElement('section')
@@ -101,7 +109,6 @@ export const principalPage = () => {
     btnPost.classList = 'btnPost'
     btnPost.textContent = 'Publicar'
 
-
     const postContainer = document.createElement('div')
     postContainer.classList = 'postContainer'
 
@@ -125,26 +132,42 @@ export const principalPage = () => {
     const printPost = (dataPost, dataId) => {
         const task = document.createElement('div');
         task.classList = 'task';
+
         const titleTask = document.createElement('h3');
         titleTask.classList = 'titleTask';
         titleTask.textContent = dataPost.title;
+
         const descriptionTask = document.createElement('p');
         descriptionTask.classList = 'descriptionTask';
         descriptionTask.textContent = dataPost.description;
+
         const btnDelete = document.createElement('button');
         btnDelete.classList = 'btnDelete';
         btnDelete.textContent = 'X';
         btnDelete.setAttribute('data-id', dataId)
+
+        // <i class="fa-regular fa-circle-xmark"></i>
+
         const btnEdit = document.createElement('button');
         btnEdit.classList = 'btnEdit';
         btnEdit.textContent = 'Editar';
         btnEdit.setAttribute('data-id', dataId)
 
-        task.append(titleTask, descriptionTask, btnEdit, btnDelete)
-        return task
-    }   
+        // <i class="fa-solid fa-carrot"></i>
+        // <i class="fa-solid fa-face-grin-hearts"></i>
+        const btnLike = document.createElement('button');
+        btnLike.className = 'btnLike';
+        btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
 
-    let editStatus = false; 
+        const inpuLikes = document.createElement('input')
+        inpuLikes.className = 'inpuLikes'
+        inpuLikes.setAttribute('value', 0)
+
+        task.append(titleTask, descriptionTask, btnLike, inpuLikes, btnEdit, btnDelete)
+        return task
+    }
+
+    let editStatus = false;
     let idPost = '';
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -166,7 +189,7 @@ export const principalPage = () => {
             })
 
             const arrayEditBtn = postContainer.querySelectorAll('.btnEdit')
-            arrayEditBtn.forEach(btn=>{
+            arrayEditBtn.forEach(btn => {
                 btn.addEventListener('click', async (event) => {
                     // console.log(event.target.dataset.id);
                     const dataEdit = await getPost(event.target.dataset.id)
@@ -176,8 +199,21 @@ export const principalPage = () => {
                     formContainer.querySelector('.inputPost').value = postEdit.description
 
                     editStatus = true;
-                    idPost= event.target.dataset.id
-                    formContainer.querySelector('.btnPost').innerText= 'Editar'
+                    idPost = event.target.dataset.id
+                    formContainer.querySelector('.btnPost').innerText = 'Editar'
+                })
+            })
+
+            const btnLikes = postContainer.querySelectorAll('.btnLike')
+            btnLikes.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    // console.log('funciona el btnLikes')
+                    event.target.classList.toggle('like-on')
+
+                    // funcion de conteo
+                    let inputLikesValue = document.querySelector('.inpuLikes').value
+                    console.log(inputLikesValue)
+                    inputLikesValue = parseInt(inputLikesValue) + 1
                 })
             })
 
@@ -185,17 +221,18 @@ export const principalPage = () => {
         })
     })
 
+    // // aca toca traer lo que tenia mas lo nuevo
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
         const pruebatitulo = titlePost.value
         const pruebadesc = inputPost.value
-        if(!editStatus){
+        if (!editStatus) {
             savePost(pruebatitulo, pruebadesc);
         } else {
-            updatePost(idPost, {title: titlePost.value, description: inputPost.value})
-            editStatus= false;
+            updatePost(idPost, { title: titlePost.value, description: inputPost.value })
+            editStatus = false;
         }
-        
+
         formContainer.reset()
     })
 
@@ -209,6 +246,7 @@ export const principalPage = () => {
     wall.append(header, sectionContainer, footer)
     return wall
 }
+
 
 // window.addEventListener('DOMContentLoaded', () => {
 //     // const querySnapshot = await getPosts();

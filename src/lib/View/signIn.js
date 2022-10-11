@@ -37,7 +37,6 @@ export const signIn = () => {
   window.signInEmailPass = function () {
     const email = document.getElementById('inputEmail').value;
     const pass = document.getElementById('inputPassword').value;
-    console.log(email, pass);
     authEmailPass(email, pass);
   };
 
