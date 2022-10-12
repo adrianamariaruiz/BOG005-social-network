@@ -46,6 +46,5 @@ export const signIn = () => {
 
   return signInContainer
 
-}//<button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
-// Google</button>
+}
 

@@ -31,7 +31,6 @@ export const onNavigate = (pathname, paramRoutes = routes) => {
 
 // permite utilizar flechas del navegador
 window.onpopstate = () => {
-
   rootDiv.replaceChildren(routes[window.location.pathname])
 };
 
@@ -41,7 +40,6 @@ window.addEventListener('load', () => {
   onNavigate(window.location.pathname)
 })
 
-// rootDiv.appendChild(routes[window.location.pathname])
 
 
 
