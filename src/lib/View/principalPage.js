@@ -1,8 +1,10 @@
 
-import { signOutCount, auth } from '../firebase/authFirebase.js';
+import { signOutCount, auth, usuario } from '../firebase/authFirebase.js';
 import { savePost, onGetPosts, deletePost, getPost, updatePost } from '../firebase/configFirestore.js';
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+// import { getAuth } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 
+console.log('user de principal', usuario)
 // export const principalPage = () => {
 //     let principalPageContainer = document.createElement("div")
 //     const principalPageTemplate =
@@ -79,8 +81,7 @@ export const principalPage = () => {
     // btnSignOut.textContent = 'Cerrar Sesion'
 
     // btnSignOut.classList = <i class="fa-solid fa-right-from-bracket"></i>
-    // carita para el like <i class="fa-solid fa-face-smile-tongue"></i>
-    // carita para el like <i class="fa-sharp fa-solid fa-face-smile-tongue"></i>
+
     // basurero <i class="fa-solid fa-trash-can"></i>
     // editar <i class="fa-solid fa-pen-to-square"></i>
 
@@ -88,6 +89,13 @@ export const principalPage = () => {
 
     const sectionContainer = document.createElement('section')
     sectionContainer.classList = 'sectionContainer'
+
+
+    // console.log(auth.currentUser.displayName)
+    const nameUser = document.createElement('h2')
+    nameUser.setAttribute('id', 'nameUser')
+    nameUser.textContent = auth.currentUser?.displayName ?? ''
+
 
     const formContainer = document.createElement('form')
     formContainer.classList = 'formContainer-principalPage'
@@ -116,19 +124,6 @@ export const principalPage = () => {
     footer.classList = 'footer'
 
 
-    // window.addEventListener('DOMContentLoaded', () => {
-    //    onGetPosts(getPosts().then(res => {
-    //         console.log('data', res);
-    //         res.forEach((doc) => {
-    //             console.log('este es el titulo del post', doc.title)
-    //             console.log('este es la descripcion del post', doc.description)
-    //             printPost(doc);
-    //         })
-    //     }))
-
-
-    // })
-
     const printPost = (dataPost, dataId) => {
         const task = document.createElement('div');
         task.classList = 'task';
@@ -141,31 +136,36 @@ export const principalPage = () => {
         descriptionTask.classList = 'descriptionTask';
         descriptionTask.textContent = dataPost.description;
 
-        const btnDelete = document.createElement('button');
-        btnDelete.classList = 'btnDelete';
-        btnDelete.textContent = 'X';
-        btnDelete.setAttribute('data-id', dataId)
+        const btnContainer = document.createElement('div');
+        btnContainer.classList = 'btnContainer';
 
-        // <i class="fa-regular fa-circle-xmark"></i>
+
+        const btnDelete = document.createElement('button');
+        btnDelete.classList.add("btnDelete", "fa-solid", "fa-trash-can");
+        // btnDelete.textContent = 'X';
+        btnDelete.setAttribute('data-id', dataId)
+        // btnDelete.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-trash-can")
+        // <i class="fa-solid fa-trash-can"></i>
 
         const btnEdit = document.createElement('button');
-        btnEdit.classList = 'btnEdit';
-        btnEdit.textContent = 'Editar';
+        btnEdit.classList.add("btnEdit", "fa-solid", "fa-pen-to-square");
+        // btnEdit.textContent = 'Editar';
         btnEdit.setAttribute('data-id', dataId)
+        // btnEdit.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-pen-to-square")
+        // <i class="fa-solid fa-pen-to-square"></i>
 
         // <i class="fa-solid fa-carrot"></i>
         // <i class="fa-solid fa-face-grin-hearts"></i>
         const btnLike = document.createElement('button');
-        btnLike.className = 'btnLike';
-        btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
-        btnLike.setAttribute('data-id', dataId)
+        btnLike.classList.add("btnLike", "fa-solid", "fa-face-grin-hearts");
+        // btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
+        // btnLike.setAttribute('id', index)
 
-        const inpuLikes = document.createElement('input')
-        inpuLikes.className = 'inpuLikes'
-        inpuLikes.setAttribute('value', 0)
-        inpuLikes.setAttribute('data-id', dataId)
+        const spanLikes = document.createElement('span');
+        spanLikes.textContent = 0
 
-        task.append(titleTask, descriptionTask, btnLike, inpuLikes, btnEdit, btnDelete)
+        btnContainer.append(btnLike, spanLikes, btnEdit, btnDelete)
+        task.append(titleTask, descriptionTask, btnContainer)
         return task
     }
 
@@ -176,10 +176,7 @@ console.log(auth.email, 'auth.email');
         // const querySnapshot = await getPosts();
         onGetPosts((querySnapshot) => {
             postContainer.innerHTML = ""
-            let i = 0;
-            console.log('query', querySnapshot);
             querySnapshot.forEach((infoPost) => {
-                // console.log(i);
                 const dataPost = infoPost.data()
                 const dataId = infoPost.id
                 postContainer.append(printPost(dataPost, dataId))
@@ -206,6 +203,7 @@ console.log(auth.email, 'auth.email');
 
                     editStatus = true;
                     idPost = event.target.dataset.id
+                    console.log(idPost)
                     formContainer.querySelector('.btnPost').innerText = 'Editar'
                 })
             })
@@ -232,22 +230,25 @@ console.log(auth.email, 'auth.email');
                     // // console.log(postid)
                     // idPost = event.target.dataset.id
                     // console.log('probando idPost', idPost)
+
                     // funcion de conteo
-                    // const inputLikes = document.querySelector('.inpuLikes')
-                    const inputLikes = document.getElementById()
-                    
-                    console.log(id);
+                    const inputLikes = document.querySelector('.inputLikes')
+                    // const inputLikes = document.querySelector('#')
+                    const textLikes = document.querySelectorAll('.span')
+
                     if (event.target.classList.contains('like-on')) {
-                        // console.log('sumar 1')
+                        console.log('sumar 1')
                         let contadorLikes = parseInt(inputLikes.value) + 1;
                         inputLikes.value = contadorLikes
-                        // console.log('contador', contadorLikes)
+                        console.log('contador', contadorLikes)
+
                     } else {
-                        // console.log('restar1')
+                        console.log('restar1')
                         let contadorLikes = parseInt(inputLikes.value) - 1;
                         inputLikes.value = contadorLikes
-                        // console.log('restando', contadorLikes)
+                        console.log('restando', contadorLikes)
                     }
+
                     // console.log('probando el inputLikesValue')
                 })
             })
@@ -256,7 +257,6 @@ console.log(auth.email, 'auth.email');
         })
     })
 
-    // // aca toca traer lo que tenia mas lo nuevo
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
         const pruebatitulo = titlePost.value
@@ -277,7 +277,7 @@ console.log(auth.email, 'auth.email');
 
     header.append(imageLogo, imageTitle, btnSignOut)
     formContainer.append(titlePost, inputPost, btnPost)
-    sectionContainer.append(formContainer, postContainer)
+    sectionContainer.append(nameUser, formContainer, postContainer)
     wall.append(header, sectionContainer, footer)
     return wall
 }
