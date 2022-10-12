@@ -1,5 +1,5 @@
 
-import { signOutCount } from '../firebase/authFirebase.js';
+import { signOutCount, auth } from '../firebase/authFirebase.js';
 import { savePost, onGetPosts, deletePost, getPost, updatePost } from '../firebase/configFirestore.js';
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
@@ -158,10 +158,12 @@ export const principalPage = () => {
         const btnLike = document.createElement('button');
         btnLike.className = 'btnLike';
         btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
+        btnLike.setAttribute('data-id', dataId)
 
         const inpuLikes = document.createElement('input')
         inpuLikes.className = 'inpuLikes'
         inpuLikes.setAttribute('value', 0)
+        inpuLikes.setAttribute('data-id', dataId)
 
         task.append(titleTask, descriptionTask, btnLike, inpuLikes, btnEdit, btnDelete)
         return task
@@ -169,15 +171,19 @@ export const principalPage = () => {
 
     let editStatus = false;
     let idPost = '';
-
+console.log(auth.email, 'auth.email');
     window.addEventListener('DOMContentLoaded', () => {
         // const querySnapshot = await getPosts();
         onGetPosts((querySnapshot) => {
             postContainer.innerHTML = ""
-            querySnapshot.forEach(infoPost => {
+            let i = 0;
+            console.log('query', querySnapshot);
+            querySnapshot.forEach((infoPost) => {
+                // console.log(i);
                 const dataPost = infoPost.data()
                 const dataId = infoPost.id
                 postContainer.append(printPost(dataPost, dataId))
+                i++;
             })
 
             const arrayDeleteBtn = postContainer.querySelectorAll('.btnDelete')
@@ -204,16 +210,45 @@ export const principalPage = () => {
                 })
             })
 
+            // const btnLikes = postContainer.querySelectorAll('.btnLike')
+            // btnLikes.forEach(btn => {
+            //     btn.addEventListener('click', (event) => {
+            //         // console.log('funciona el btnLikes')
+            //         event.target.classList.toggle('like-on')
+
+            //         // funcion de conteo
+            //         let inputLikesValue = document.querySelector('.inpuLikes').value
+            //         console.log(inputLikesValue)
+            //         inputLikesValue = parseInt(inputLikesValue) + 1
+            //     })
+            // })
             const btnLikes = postContainer.querySelectorAll('.btnLike')
-            btnLikes.forEach(btn => {
+            btnLikes.forEach((btn) => {
                 btn.addEventListener('click', (event) => {
                     // console.log('funciona el btnLikes')
                     event.target.classList.toggle('like-on')
-
+                    // const postid = await getPost(event.target.dataset.id)
+                    // // const postId = postid.data()
+                    // // console.log(postid)
+                    // idPost = event.target.dataset.id
+                    // console.log('probando idPost', idPost)
                     // funcion de conteo
-                    let inputLikesValue = document.querySelector('.inpuLikes').value
-                    console.log(inputLikesValue)
-                    inputLikesValue = parseInt(inputLikesValue) + 1
+                    // const inputLikes = document.querySelector('.inpuLikes')
+                    const inputLikes = document.getElementById()
+                    
+                    console.log(id);
+                    if (event.target.classList.contains('like-on')) {
+                        // console.log('sumar 1')
+                        let contadorLikes = parseInt(inputLikes.value) + 1;
+                        inputLikes.value = contadorLikes
+                        // console.log('contador', contadorLikes)
+                    } else {
+                        // console.log('restar1')
+                        let contadorLikes = parseInt(inputLikes.value) - 1;
+                        inputLikes.value = contadorLikes
+                        // console.log('restando', contadorLikes)
+                    }
+                    // console.log('probando el inputLikesValue')
                 })
             })
 
