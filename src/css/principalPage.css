@@ -104,12 +104,27 @@
     /* border: solid 1px #007878; */
     background-color: #ebeaea;
     box-shadow: 2px 1px 5px #0000005b;
-    margin: 8px;
-    padding: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.btnEdit {
+    /* border-radius: 50%; */
+    border-style: none;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
 }
 
 .btnDelete {
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    border-style: none;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btnDelete:hover {
+    color: #5c5c5c;
 }
 
 .btnLike {
@@ -117,17 +132,15 @@
     width: 30px;
     background-color: transparent;
     border: none;
-}
-
-.btnLike i {
-    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
 }
 
 .like-on {
     color: #007878;
 }
 
-.inpuLikes {
+.inputLikes {
     width: 50px;
     background-color: transparent;
     border-style: none;
