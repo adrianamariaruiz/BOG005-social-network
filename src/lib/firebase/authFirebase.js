@@ -40,7 +40,7 @@ export const createUser = (email, pass, name) => {
     });
 };
 
-export const getUserAuth = () => auth
+// export const getUserAuth = () => auth
 
 export const authEmailPass = (email, pass) => {
   signInWithEmailAndPassword(auth, email, pass)

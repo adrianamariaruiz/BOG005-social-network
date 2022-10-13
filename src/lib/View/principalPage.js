@@ -115,16 +115,7 @@ export const principalPage = () => {
         onGetPosts((querySnapshot) => {
             postContainer.innerHTML = ""
             querySnapshot.forEach((infoPost) => {
-                // if (usuario != null ) {
-                //     const nameUser = usuario.displayName
-                //     const emailUser =  usuario.email
-                //     const dataPost = infoPost.data()
-                //     const dataId = infoPost.id
-                //     postContainer.append(printPost(dataPost, dataId, nameUser, emailUser))
-                //   }
                 const dataPost = infoPost.data()
-                // const dataName = dataPost.namePost
-                // console.log('data name',dataName);
                     const dataId = infoPost.id
                     postContainer.append(printPost(dataPost, dataId))
             })
@@ -185,12 +176,14 @@ export const principalPage = () => {
         const title = titlePost.value
         const desc = inputPost.value
         if (!editStatus) {
-            // console.log('save post', usuario.displayName);
+            // console.log('save post', usuario);
             const namePost = usuario.displayName
             savePost(title, desc, namePost);
         } else {
             updatePost(idPost, { title: titlePost.value, description: inputPost.value })
             editStatus = false;
+            formContainer.querySelector('.btnPost').innerText = 'Publicar'
+
         }
 
         formContainer.reset()
