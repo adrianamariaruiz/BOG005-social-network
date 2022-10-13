@@ -79,6 +79,7 @@
 
 .titlePost {
     height: 30px;
+    font-family: 'Simonetta', cursive;
     width: 80%;
     border-style: none;
     outline-color: #65C7C7;
@@ -86,6 +87,7 @@
 }
 
 .inputPost {
+    font-family: 'Simonetta', cursive;
     height: 80px;
     width: 80%;
     margin: 10px 0px 10px 0px;

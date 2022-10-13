@@ -1,6 +1,8 @@
 
+
 import { signOutCount, auth, usuario } from '../firebase/authFirebase.js';
 import { savePost, onGetPosts, deletePost, getPost, updatePost } from '../firebase/configFirestore.js';
+
 // import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 // import { getAuth } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 
@@ -96,6 +98,16 @@ export const principalPage = () => {
 
     const formContainer = document.createElement('form')
     formContainer.classList = 'formContainer-principalPage'
+    
+    // const nameUser= document.createElement('h2')
+    // nameUser.classList = 'nameUser';
+    // nameUser.textContent= auth.currentUser.auth.currentUser.displayName;
+    // console.log("prueba", auth.currentUser.auth.currentUser.displayName)
+
+
+    // const emailUser= document.createElement('h3')
+    // emailUser.classList = 'emailUser';
+    // emailUser.textContent= auth.displayName;
 
     const titlePost = document.createElement('input')
     titlePost.classList = 'titlePost'
@@ -167,7 +179,7 @@ export const principalPage = () => {
         task.append(titleTask, descriptionTask, btnContainer)
         return task
     }
-
+    // ,nameUser, emailUser
     let editStatus = false;
     let idPost = '';
 
