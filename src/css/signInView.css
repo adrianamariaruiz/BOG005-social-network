@@ -78,8 +78,11 @@ img {
     padding: 3%;
 }
 
+.registrationLink{
+    font-weight: bold;
+}
 
-.linkSign,.registrationLink,
+.linkSign,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
     font-weight: bold;

@@ -19,7 +19,7 @@ export const signUp = () => {
     <div>
     <button class="btnSignIn btnSignUp" id="btnSignUp"  type="submit" onclick="register()">Registrarse</button>
     </div>
-    <p>Ya tienes una cuenta?</p>  
+    <p class="registrationLink">Ya tienes una cuenta?</p>  
     <a href="/" class="linkSign" > Inicia Sesión</a>
   </div>`;
 

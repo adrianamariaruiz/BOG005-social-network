@@ -4,7 +4,7 @@ import { authEmailPass, authGoogle } from '../firebase/authFirebase.js';
 
 export const signIn = () => {
 
-  let signInContainer = document.createElement("div")
+  let signInContainer = document.createElement("div") 
   signInContainer.classList.add('container')
   // let signInContainer = document.getElementById('root')
   const signInTemplate =
@@ -29,8 +29,8 @@ export const signIn = () => {
           <button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
  Google</button>
 
-       <div class="registrationLink">
-       <p>No tienes una cuenta?</p>  
+       <div >
+       <p class="registrationLink" >No tienes una cuenta?</p>  
        <a href="/signUp" class="linkSign" > Registrate</a>
        </div>`;
 
