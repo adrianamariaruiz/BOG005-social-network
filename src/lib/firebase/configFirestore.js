@@ -4,8 +4,8 @@ import { app } from '../firebase/authFirebase.js';
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore();
 
-export const savePost = (title, description) => {
-    addDoc(collection(db, "posts"), { title, description });
+export const savePost = (title, description, namePost) => {
+    addDoc(collection(db, "posts"), { title, description, namePost});
 }
 
 // export const getPosts = async () => {
