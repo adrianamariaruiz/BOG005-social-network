@@ -82,6 +82,7 @@ img {
 .linkSign,.registrationLink,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
+    font-weight: bold;
     color: #007878;
     padding: 10px;
 }

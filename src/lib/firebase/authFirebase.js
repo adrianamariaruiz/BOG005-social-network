@@ -1,27 +1,32 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-cycle */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 import { onNavigate } from '../../main.js';
 import { firebaseConfig } from './configFirebase.js';
 
-
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+
+export let auth = getAuth(app);
+export let usuario = ''
+// console.log(auth)
 
 export const createUser = (email, pass, name) => {
   createUserWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
-      const user = userCredential.user;
-      // console.log(user);
-      updateProfile(auth.currentUser, {
+      return updateProfile(userCredential.user, {
         displayName: name,
-      });
-      onNavigate('/principalPage');
+      })
+    }).then(res => {
+      auth = getAuth(app)
+      console.log(auth.currentUser.displayName)
+
+      // onNavigate('/principalPage');
     })
+
     .catch((error) => {
+      console.log(error)
       // const errorCode = error.code;
       // const errorMessage = error.message;
       // alert(errorMessage, errorCode);
@@ -41,13 +46,17 @@ export const createUser = (email, pass, name) => {
     });
 };
 
-console.log("prueba de auth", auth.displayName
-)
+
+export const getUserAuth = () => auth
+// console.log('user por aca', user);
+
 export const authEmailPass = (email, pass) => {
   signInWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("trae",user);
+
+      console.log(user.displayName);
+
       onNavigate('/principalPage');
     })
     .catch((error) => {
@@ -90,6 +99,17 @@ export const authGoogle = () => {
       // ...
     });
 }
+
+onAuthStateChanged(auth, (user) => { // dice si estamos conectadas//
+  if (user) {
+    usuario = user
+    console.log('usuario', user)
+    onNavigate('/principalPage')
+  } else {
+    console.log('No se encuentra el usuario');
+    onNavigate('/signUp')
+  }
+});
 
 export const signOutCount = () => {
   signOut(auth).then(() => {
