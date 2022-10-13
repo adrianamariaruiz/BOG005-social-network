@@ -21,7 +21,7 @@ img {
 }
 
 .inputForm {
-   
+    font-family: 'Simonetta', cursive;
     background-color: #FBF6F0;
     border: solid 2px #65C7C7;
     width: 80%;
@@ -79,8 +79,7 @@ img {
 }
 
 
-
-.linkSign,.registrationLink p,
+.linkSign,.registrationLink,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
     color: #007878;

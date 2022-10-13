@@ -28,10 +28,10 @@ export const signIn = () => {
           
           <button class="btnGoogle" id="btnGoogle" type="submit" onclick="signInGoogle()"><img src="./images/google.png">Acceder con
  Google</button>
-            </div>
-            <p>No tienes una cuenta?</p>  
-        <a href="/signUp" class="linkSign" > Registrate</a>
-      </div>`;
+       </div class="registrationLink">
+       <p>No tienes una cuenta?</p>  
+       <a href="/signUp" class="linkSign" > Registrate</a>
+       </div>`;
 
   signInContainer.innerHTML = signInTemplate
 
@@ -41,7 +41,7 @@ export const signIn = () => {
     authEmailPass(email, pass);
   };
 
-  window.signInGoogle = function (){
+  window.signInGoogle = function () {
     authGoogle();
   }
 

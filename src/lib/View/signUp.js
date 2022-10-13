@@ -19,7 +19,8 @@ export const signUp = () => {
     <div>
     <button class="btnSignIn btnSignUp" id="btnSignUp"  type="submit" onclick="register()">Registrarse</button>
     </div>
-    <a href="/" class="linkSign" >Ya tienes una cuenta? Inicia Sesión</a>
+    <p>Ya tienes una cuenta?</p>  
+    <a href="/" class="linkSign" > Inicia Sesión</a>
   </div>`;
 
   signUpContainer.innerHTML = signUpTemplate;
