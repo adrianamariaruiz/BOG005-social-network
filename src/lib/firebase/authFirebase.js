@@ -9,7 +9,7 @@ import { firebaseConfig } from './configFirebase.js';
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 export const createUser = (email, pass, name) => {
   createUserWithEmailAndPassword(auth, email, pass)
@@ -41,11 +41,13 @@ export const createUser = (email, pass, name) => {
     });
 };
 
+console.log("prueba de auth", auth.displayName
+)
 export const authEmailPass = (email, pass) => {
   signInWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
       const user = userCredential.user;
-      // console.log(user);
+      console.log("trae",user);
       onNavigate('/principalPage');
     })
     .catch((error) => {
