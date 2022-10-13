@@ -59,8 +59,6 @@ console.log('user de principal', usuario)
 // }
 
 
-
-
 export const principalPage = () => {
 
     const wall = document.createElement('div')
@@ -78,14 +76,13 @@ export const principalPage = () => {
     imageTitle.setAttribute('src', './images/kids_food.png');
 
     const btnSignOut = document.createElement("button")
+    btnSignOut.classList.add('btn_SignOut', 'fa-solid', 'fa-right-from-bracket')
     // btnSignOut.textContent = 'Cerrar Sesion'
 
     // btnSignOut.classList = <i class="fa-solid fa-right-from-bracket"></i>
 
     // basurero <i class="fa-solid fa-trash-can"></i>
     // editar <i class="fa-solid fa-pen-to-square"></i>
-
-    btnSignOut.classList = 'btn_SignOut'
 
     const sectionContainer = document.createElement('section')
     sectionContainer.classList = 'sectionContainer'
@@ -157,11 +154,13 @@ export const principalPage = () => {
         // <i class="fa-solid fa-carrot"></i>
         // <i class="fa-solid fa-face-grin-hearts"></i>
         const btnLike = document.createElement('button');
-        btnLike.classList.add("btnLike", "fa-solid", "fa-face-grin-hearts");
+        btnLike.classList.add("btnLike", "fa-regular", "fa-face-laugh-wink");
+        // <i class="fa-regular fa-face-laugh-wink"></i>
         // btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
         // btnLike.setAttribute('id', index)
 
         const spanLikes = document.createElement('span');
+        spanLikes.className = 'spanLikes'
         spanLikes.textContent = 0
 
         btnContainer.append(btnLike, spanLikes, btnEdit, btnDelete)
@@ -202,7 +201,7 @@ export const principalPage = () => {
 
                     editStatus = true;
                     idPost = event.target.dataset.id
-                    console.log(idPost)
+                    // console.log(idPost)
                     formContainer.querySelector('.btnPost').innerText = 'Editar'
                 })
             })

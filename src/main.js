@@ -37,7 +37,7 @@ window.onpopstate = () => {
 
 // imprime vista iniciar sesión
 window.addEventListener('load', () => {
-  console.log('rutas', window.location.pathname)
+  // console.log('rutas', window.location.pathname)
   onNavigate(window.location.pathname)
 })
 

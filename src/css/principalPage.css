@@ -8,11 +8,6 @@
 #ECC5FB
 */
 
-/* body{
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 70px;
-} */
 .header {
     font-family: 'Simonetta', cursive;
     padding: 5px;
@@ -32,16 +27,14 @@
     margin: 2px;
     height: 92%;
     width: auto;
-
 }
 
 .btn_SignOut,
 .btnPost {
     font-family: 'Simonetta', cursive;
+    font-weight: bold;
     background-color: #ECC5FB;
     border: solid 2px #f3f1dc;
-    height: 30px;
-    width: 130px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px #0000005b;
     text-align: center;
@@ -51,17 +44,21 @@
 }
 
 .btnPost {
+    height: 30px;
+    width: 130px;
     background-color: #65C7C7;
 }
 
-.btn_SignOut::before {
-    content: 'X';
+.btn_SignOut {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 .sectionContainer {
-    margin: 10px;
+    margin: 10px 10px 70px 10px;
     padding: 10px;
-    /* border: solid 1px rgb(248, 186, 255); */
+    /* border: solid 1px pink; */
     box-shadow: 2px 2px 10px #0000005b;
     background-color: #DFF2EC;
     height: 100%;
@@ -74,16 +71,18 @@
     padding: 5px;
     margin-bottom: 5px;
     height: 100%;
-    /* border: solid 1px rgb(238, 255, 0); */
+    /* border: solid 1px yellow; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .titlePost {
-    height: 20px;
+    height: 30px;
     width: 80%;
     border-style: none;
+    outline-color: #65C7C7;
+    box-shadow: 2px 2px 10px #0000005b;
 }
 
 .inputPost {
@@ -91,21 +90,40 @@
     width: 80%;
     margin: 10px 0px 10px 0px;
     border-style: none;
+    outline-color: #65C7C7;
+    box-shadow: 2px 2px 10px #0000005b;
 }
 
 
 .postContainer {
-    /* border: solid 1px black; */
+    /* border: solid 1px red; */
     background-color: #FBF6F0;
     height: 100%;
 }
 
+/* los posts */
 .task {
     /* border: solid 1px #007878; */
     background-color: #ebeaea;
     box-shadow: 2px 1px 5px #0000005b;
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
+}
+
+.titleTask {
+    margin-bottom: 10px;
+}
+
+.btnContainer {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+    /* background-color: #65C7C7; */
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .btnEdit {
@@ -114,13 +132,21 @@
     cursor: pointer;
     height: 30px;
     width: 30px;
+    margin-left: 40px;
+    background-color: transparent;
+    font-size: 18px;
 }
 
 .btnDelete {
     /* border-radius: 50%; */
     border-style: none;
     cursor: pointer;
-    margin-top: 5px;
+    margin: 5px 20px 5px 40px;
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+    background-color: transparent;
+    /* margin-left: 40px; */
 }
 
 .btnDelete:hover {
@@ -134,6 +160,7 @@
     border: none;
     cursor: pointer;
     padding: 5px;
+    font-size: 18px;
 }
 
 .like-on {
@@ -150,9 +177,9 @@
 .footer {
     background-color: #65C7C7;
     height: 70px;
-    /* position: absolute;
+    position: fixed;
     bottom: 0;
-    width: 100%; */
+    width: 100%;
 }
 
 
@@ -170,6 +197,7 @@
 }
 
 @media all and (min-width: 1024px) {
+
     .header {
         height: 130px;
         padding: 20px;
@@ -178,4 +206,59 @@
     .imageLogo {
         margin-bottom: 20px;
     }
+
+    /* .btn_SignOut::before {
+        content: 'Cerrar Sesión';
+    } */
+
+    .formContainer-principalPage {
+        /* border: solid 1px rgb(238, 255, 0); */
+        width: 60%;
+        padding: 40px;
+    }
+
+    .sectionContainer {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .postContainer {
+        width: 60%;
+    }
+
+    .titlePost {
+        height: 50px;
+    }
+
+    .inputPost {
+        height: 200px;
+    }
+
+
+    .btnPost {
+        height: 50px;
+        width: 200px;
+        font-size: 1.5rem;
+    }
+
+    .btn_SignOut {
+        height: 40px;
+        width: 150px;
+    }
+
+    .btnLike,
+    .btnDelete,
+    .btnEdit {
+        font-size: 25px;
+    }
+
+    .btnLike {
+        margin-right: 8px;
+    }
+
+    .spanLikes {
+        font-size: 25px;
+    }
+
+
 }
