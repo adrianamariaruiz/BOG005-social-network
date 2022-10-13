@@ -5,13 +5,11 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmail
 import { onNavigate } from '../../main.js';
 import { firebaseConfig } from './configFirebase.js';
 
-
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
 export let auth = getAuth(app);
 export let usuario = ''
-
 
 export const createUser = (email, pass, name) => {
   createUserWithEmailAndPassword(auth, email, pass)
@@ -40,16 +38,21 @@ export const createUser = (email, pass, name) => {
     });
 };
 
+
 // export const getUserAuth = () => auth
+
 
 export const authEmailPass = (email, pass) => {
   signInWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
       const user = userCredential.user;
+
       console.log(user.displayName);
+
       if(usuario!=null){
         onNavigate('/principalPage');
       }
+
     })
     .catch((error) => {
       const errorCode = error.code;

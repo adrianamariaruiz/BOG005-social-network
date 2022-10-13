@@ -21,7 +21,7 @@ img {
 }
 
 .inputForm {
-   
+    font-family: 'Simonetta', cursive;
     background-color: #FBF6F0;
     border: solid 2px #65C7C7;
     width: 80%;
@@ -39,7 +39,8 @@ img {
 
 .btnSignIn,
 .btnGoogle {
-    font-family: 'Simonetta', cursive;
+    font-family: 'Simonetta';
+    font-weight: bold;
     background-color: #65C7C7;
     border: solid 2px #FBF6F0;
     height: 8vh;
@@ -77,15 +78,18 @@ img {
     padding: 3%;
 }
 
-.linkSign,
+
+.linkSign,.registrationLink,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
+    font-weight: bold;
     color: #007878;
     padding: 10px;
 }
 
 .optionSignIn hr {
     font-family: 'Simonetta', cursive;
+
     width: 30%;
     border: solid 0.3px #007878;
 }
