@@ -21,7 +21,7 @@ img {
 }
 
 .inputForm {
-   
+
     background-color: #FBF6F0;
     border: solid 2px #65C7C7;
     width: 80%;
@@ -40,6 +40,7 @@ img {
 .btnSignIn,
 .btnGoogle {
     font-family: 'Simonetta', cursive;
+    font-weight: bold;
     background-color: #65C7C7;
     border: solid 2px #FBF6F0;
     height: 8vh;
@@ -78,8 +79,10 @@ img {
 }
 
 .linkSign,
+.registrationLink,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
+    font-weight: bold;
     color: #007878;
     padding: 10px;
 }
