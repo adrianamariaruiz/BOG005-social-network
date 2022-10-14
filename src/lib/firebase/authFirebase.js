@@ -43,7 +43,7 @@ export const authEmailPass = (email, pass) => {
 
       console.log(user.displayName);
 
-      if (usuario != null) {
+      if (usuario != '') {
         onNavigate('/principalPage');
       }
     })
@@ -66,7 +66,7 @@ export const authGoogle = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      if (usuario != null) {
+      if (usuario != '') {
         onNavigate('/principalPage');
       }
     }).catch((error) => {
