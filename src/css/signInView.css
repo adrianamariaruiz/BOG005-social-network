@@ -79,7 +79,8 @@ img {
 }
 
 
-.linkSign,.registrationLink,
+.linkSign,
+.registrationLink,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
     font-weight: bold;
@@ -89,7 +90,6 @@ img {
 
 .optionSignIn hr {
     font-family: 'Simonetta', cursive;
-
     width: 30%;
     border: solid 0.3px #007878;
 }
