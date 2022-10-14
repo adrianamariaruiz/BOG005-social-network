@@ -1,6 +1,6 @@
 
 import { signOutCount, auth, usuario } from '../firebase/authFirebase.js';
-import { savePost, onGetPosts, deletePost, getPost, updatePost, like, getPosts } from '../firebase/configFirestore.js';
+import { savePost, onGetPosts, deletePost, getPost, updatePost, like, dislike, getPosts } from '../firebase/configFirestore.js';
 
 export const principalPage = () => {
     const wall = document.createElement('div')
@@ -90,6 +90,13 @@ export const principalPage = () => {
 
         btnLike.classList.add("btnLike", "fa-regular", "fa-face-laugh-wink");
         btnLike.setAttribute('data-id', dataId)
+
+        if (dataPost.arrayLikes.includes(auth.currentUser.uid)) {
+            btnLike.classList.add('color-on')
+        } else {
+            btnLike.classList.remove('color-on')
+        }
+
         // <i class="fa-regular fa-face-laugh-wink"></i>
         // btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
         // btnLike.setAttribute('id', index)
@@ -143,35 +150,56 @@ export const principalPage = () => {
             // console.log('usuarioId', usuario.uid);
             const idUser = usuario.uid
 
-            const likeFunction = (idPost, idUser, isLike) => like(idPost, idUser, isLike);
+            // const likeFunction = (idPost, idUser, isLike) => like(idPost, idUser, isLike)
 
             const btnLikes = postContainer.querySelectorAll('.btnLike')
             btnLikes.forEach((btn) => {
                 btn.addEventListener('click', (event) => {
-                    event.target.classList.toggle('like-on')
+
+                    // event.target.classList.toggle('like-on')
+
+                    // if (event.target.classList.contains('like-on')) {
+                    //     event.target.classList.remove('like-on')
+                    // } else {
+                    //     event.target.classList.add('like-on')
+                    // }
+
+                    console.log(btn)
                     idPost = event.target.dataset.id
 
-                    if (event.target.classList.contains('like-on')) {
-                        isLike = true;
-                        console.log('isLike esta en true')
-                    } else {
-                        isLike = false;
-                        console.log('isLike esta en false')
-                    }
-                    likeFunction(idPost, idUser, isLike)
+                    // if (event.target.classList.contains('like-on')) {
+                    //     isLike = true;
+                    //     console.log('isLike esta en true')
+                    // } else {
+                    //     isLike = false;
+                    //     console.log('isLike esta en false')
+                    // }
+
+                    // like(idPost, idUser).then(res => { })
                     getPosts().then((res) => res.forEach((doc) => {
                         // console.log(doc.data())
                         if (doc.id === idPost) {
                             if (doc.data().arrayLikes.includes(auth.currentUser.uid)) {
                                 console.log('entro al if', auth.currentUser.uid)
-                                likeFunction(idPost, auth.currentUser.uid, true);
+                                dislike(idPost, auth.currentUser.uid);
                             } else {
-                                likeFunction(idPost, auth.currentUser.uid, false);
+                                like(idPost, auth.currentUser.uid);
                             }
                         } else {
                             console.log('error')
                         }
                     })
+
+                        // btn.addEventListener('click', () => {
+
+
+                        //         // if (doc.data().arrayLikes.includes(auth.currentUser.uid)) {
+                        //         //     event.target.classList.add('color-on')
+                        //         // } else {
+                        //         //     event.target.classList.remove('color-on')
+                        //         // }
+                        //     })
+
                     )
                 })
             })

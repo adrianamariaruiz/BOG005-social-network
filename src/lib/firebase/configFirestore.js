@@ -34,13 +34,14 @@ export const updatePost = (id, newFields) => updateDoc(doc(db, 'posts', id), new
 
 
 
-export const like = (idPost, idUser, isLike) => {
-    // console.log(idPost, idUser, isLike)
-    if (isLike) {
-        return updateDoc(doc(db, 'posts', idPost), { arrayLikes: arrayUnion(idUser) });
-    } else {
-        return updateDoc(doc(db, 'posts', idPost), { arrayLikes: arrayRemove(idUser) });
-    }
+export const like = (idPost, idUser) => {
+    updateDoc(doc(db, 'posts', idPost), { arrayLikes: arrayUnion(idUser) })
+}
+
+
+export const dislike = (idPost, idUser) => {
+    updateDoc(doc(db, 'posts', idPost), { arrayLikes: arrayRemove(idUser) })
+
 };
 
 

@@ -165,7 +165,7 @@
     font-size: 18px;
 }
 
-.like-on {
+.color-on {
     color: #007878;
 }
 
@@ -193,9 +193,9 @@
         width: auto;
     }
 
-    .btn_SignOut::before {
+    /* .btn_SignOut::before {
         content: 'Cerrar Sesión';
-    }
+    } */
 }
 
 @media all and (min-width: 1024px) {
