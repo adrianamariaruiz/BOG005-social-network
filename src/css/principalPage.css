@@ -230,12 +230,13 @@
 
     .titlePost {
         height: 50px;
+        font-size: 1.3rem;
     }
 
     .inputPost {
         height: 200px;
+        font-size: 1.3rem;
     }
-
 
     .btnPost {
         height: 50px;
