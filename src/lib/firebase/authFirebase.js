@@ -19,8 +19,6 @@ export const createUser = (email, pass, name) => {
       })
     }).then(res => {
       auth = getAuth(app)
-
-      // onNavigate('/principalPage');
     })
 
     .catch((error) => {
@@ -38,10 +36,6 @@ export const createUser = (email, pass, name) => {
     });
 };
 
-
-// export const getUserAuth = () => auth
-
-
 export const authEmailPass = (email, pass) => {
   signInWithEmailAndPassword(auth, email, pass)
     .then((userCredential) => {
@@ -52,7 +46,6 @@ export const authEmailPass = (email, pass) => {
       if (usuario != null) {
         onNavigate('/principalPage');
       }
-
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -87,11 +80,10 @@ export const authGoogle = () => {
 onAuthStateChanged(auth, (user) => { // dice si estamos conectadas//
   if (user) {
     usuario = user
-    console.log('usuario', usuario.displayName)
+    // console.log('usuario', usuario.displayName)
     onNavigate('/principalPage')
   } else {
     console.log('No se encuentra el usuario');
-    // onNavigate('/')
   }
 });
 

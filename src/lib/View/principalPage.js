@@ -3,6 +3,9 @@ import { signOutCount, auth, usuario } from '../firebase/authFirebase.js';
 import { savePost, onGetPosts, deletePost, getPost, updatePost, like, dislike, getPosts } from '../firebase/configFirestore.js';
 
 export const principalPage = () => {
+
+    console.log(usuario)
+
     const wall = document.createElement('div')
     wall.classList = 'wall'
 
@@ -56,10 +59,13 @@ export const principalPage = () => {
     // <i class="fa-brands fa-facebook"></i>
     // <i class="fa-brands fa-instagram"></i>
 
+    const printHello = (userNameHello) => {
+        const hello = document.createElement('div');
+        hello.classList = 'hello';
+        hello.textContent = userNameHello;
+    }
+
     const printPost = (dataPost, dataId) => {
-
-        // console.log(dataPost.arrayLikes.length)
-
         const task = document.createElement('div');
         task.classList = 'task';
 
@@ -97,10 +103,6 @@ export const principalPage = () => {
             btnLike.classList.remove('color-on')
         }
 
-        // <i class="fa-regular fa-face-laugh-wink"></i>
-        // btnLike.appendChild(document.createElement('i')).classList.add("fa-solid", "fa-face-grin-hearts")
-        // btnLike.setAttribute('id', index)
-
         const spanLikes = document.createElement('span');
         spanLikes.className = 'spanLikes'
         spanLikes.textContent = dataPost.arrayLikes.length
@@ -109,15 +111,16 @@ export const principalPage = () => {
         task.append(nameTask, titleTask, descriptionTask, btnContainer)
         return task
     }
-    // ,nameUser, emailUser
+
     let editStatus = false;
     let idPost = '';
-    let isLike = false
     let arrayLikes = [];
 
     window.addEventListener('DOMContentLoaded', () => {
         onGetPosts((querySnapshot) => {
             postContainer.innerHTML = ""
+            console.log(usuario.displayName);
+            sectionContainer.append(printHello(auth.currentUser.uid))
             querySnapshot.forEach((infoPost) => {
                 const dataPost = infoPost.data()
                 const dataId = infoPost.id
@@ -146,59 +149,21 @@ export const principalPage = () => {
                 })
             })
 
-            // console.log('idPost', idPost);
-            // console.log('usuarioId', usuario.uid);
-            const idUser = usuario.uid
-
-            // const likeFunction = (idPost, idUser, isLike) => like(idPost, idUser, isLike)
+            // const idUser = usuario.uid
 
             const btnLikes = postContainer.querySelectorAll('.btnLike')
             btnLikes.forEach((btn) => {
                 btn.addEventListener('click', (event) => {
-
-                    // event.target.classList.toggle('like-on')
-
-                    // if (event.target.classList.contains('like-on')) {
-                    //     event.target.classList.remove('like-on')
-                    // } else {
-                    //     event.target.classList.add('like-on')
-                    // }
-
-                    console.log(btn)
                     idPost = event.target.dataset.id
-
-                    // if (event.target.classList.contains('like-on')) {
-                    //     isLike = true;
-                    //     console.log('isLike esta en true')
-                    // } else {
-                    //     isLike = false;
-                    //     console.log('isLike esta en false')
-                    // }
-
-                    // like(idPost, idUser).then(res => { })
                     getPosts().then((res) => res.forEach((doc) => {
-                        // console.log(doc.data())
                         if (doc.id === idPost) {
                             if (doc.data().arrayLikes.includes(auth.currentUser.uid)) {
-                                console.log('entro al if', auth.currentUser.uid)
                                 dislike(idPost, auth.currentUser.uid);
                             } else {
                                 like(idPost, auth.currentUser.uid);
                             }
-                        } else {
-                            console.log('error')
                         }
                     })
-
-                        // btn.addEventListener('click', () => {
-
-
-                        //         // if (doc.data().arrayLikes.includes(auth.currentUser.uid)) {
-                        //         //     event.target.classList.add('color-on')
-                        //         // } else {
-                        //         //     event.target.classList.remove('color-on')
-                        //         // }
-                        //     })
 
                     )
                 })
@@ -211,7 +176,6 @@ export const principalPage = () => {
         const title = titlePost.value
         const desc = inputPost.value
         if (!editStatus) {
-            // console.log('save post', usuario);
             const namePost = usuario.displayName
             savePost(title, desc, namePost, arrayLikes);
         } else {

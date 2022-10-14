@@ -6,7 +6,7 @@ export const signIn = () => {
 
   let signInContainer = document.createElement("div")
   signInContainer.classList.add('container')
-  // let signInContainer = document.getElementById('root')
+
   const signInTemplate =
     `
       <picture>
