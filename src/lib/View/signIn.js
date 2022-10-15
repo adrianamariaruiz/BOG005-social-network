@@ -6,7 +6,7 @@ export const signIn = () => {
 
   let signInContainer = document.createElement("div") 
   signInContainer.classList.add('container')
-  // let signInContainer = document.getElementById('root')
+
   const signInTemplate =
     `
       <picture>
@@ -30,7 +30,7 @@ export const signIn = () => {
  Google</button>
 
        <div >
-       <p class="registrationLink" >No tienes una cuenta?</p>  
+       <p  >No tienes una cuenta?</p>  
        <a href="/signUp" class="linkSign" > Registrate</a>
        </div>`;
 

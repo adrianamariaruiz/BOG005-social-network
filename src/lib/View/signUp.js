@@ -3,7 +3,7 @@ import { createUser } from '../firebase/authFirebase.js';
 export const signUp = () => {
   let signUpContainer = document.createElement("div");
   signUpContainer.classList.add('container')
-  // let signUpContainer = document.getElementById('root')
+
   const signUpTemplate = `
   <picture>
     <img id="logo" src="./images/logo2.png" alt="logo">
@@ -19,7 +19,7 @@ export const signUp = () => {
     <div>
     <button class="btnSignIn btnSignUp" id="btnSignUp"  type="submit" onclick="register()">Registrarse</button>
     </div>
-    <p class="registrationLink">Ya tienes una cuenta?</p>  
+    <p>Ya tienes una cuenta?</p>  
     <a href="/" class="linkSign" > Inicia Sesión</a>
   </div>`;
 
