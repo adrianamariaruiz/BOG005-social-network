@@ -1,5 +1,5 @@
 
-import { signOutCount, auth, usuario } from '../firebase/authFirebase.js';
+import { signOutCount, auth, usuario, onAuthStateChanged } from '../firebase/authFirebase.js';
 import { savePost, onGetPosts, deletePost, getPost, updatePost, like, dislike, getPosts } from '../firebase/configFirestore.js';
 
 export const principalPage = () => {
@@ -27,13 +27,18 @@ export const principalPage = () => {
     const sectionContainer = document.createElement('section')
     sectionContainer.classList = 'sectionContainer'
 
+    const nameEmailUser = document.createElement('div');
+    nameEmailUser.classList.add('nameEmailUser');
+    const welcome = document.createElement('p');
+    welcome.textContent = 'Bienvenida '
+    welcome.classList.add('welcome')
+    const wallNameUser = document.createElement('p');
+    wallNameUser.textContent = auth.displayName;
+    wallNameUser.classList.add('welcome')
+    wallNameUser.setAttribute('id', 'nameUser');
+
     const formContainer = document.createElement('form')
     formContainer.classList = 'formContainer-principalPage'
-
-    // const nameUser= document.createElement('h2')
-    // nameUser.classList = 'nameUser';
-    // nameUser.textContent= auth.currentUser.auth.currentUser.displayName;
-    // console.log("prueba", usuario.uid)
 
     const titlePost = document.createElement('input')
     titlePost.classList = 'titlePost'
@@ -59,11 +64,7 @@ export const principalPage = () => {
     // <i class="fa-brands fa-facebook"></i>
     // <i class="fa-brands fa-instagram"></i>
 
-    const printHello = (userNameHello) => {
-        const hello = document.createElement('div');
-        hello.classList = 'hello';
-        hello.textContent = userNameHello;
-    }
+
 
     const printPost = (dataPost, dataId) => {
         const task = document.createElement('div');
@@ -119,8 +120,7 @@ export const principalPage = () => {
     window.addEventListener('DOMContentLoaded', () => {
         onGetPosts((querySnapshot) => {
             postContainer.innerHTML = ""
-            console.log(usuario.displayName);
-            sectionContainer.append(printHello(auth.currentUser.uid))
+
             querySnapshot.forEach((infoPost) => {
                 const dataPost = infoPost.data()
                 const dataId = infoPost.id
@@ -191,9 +191,18 @@ export const principalPage = () => {
         signOutCount();
     })
 
+    onAuthStateChanged(auth, (user) => {
+        if (user != null) {
+            wallNameUser.textContent = user.displayName
+        }
+    })
+
+
     header.append(imageLogo, imageTitle, btnSignOut)
+    nameEmailUser.append(welcome, wallNameUser);
     formContainer.append(titlePost, inputPost, btnPost)
-    sectionContainer.append(formContainer, postContainer)
+    sectionContainer.append(nameEmailUser, formContainer, postContainer)
+
     wall.append(header, sectionContainer, footer)
     return wall
 }

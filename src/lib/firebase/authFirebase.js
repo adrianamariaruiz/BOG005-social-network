@@ -95,6 +95,7 @@ export const signOutCount = () => {
   });
 }
 
+export { onAuthStateChanged }
 
 
 
