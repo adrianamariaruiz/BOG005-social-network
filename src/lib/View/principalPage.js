@@ -185,7 +185,11 @@ export const principalPage = () => {
         const desc = inputPost.value
         if (!editStatus) {
             const namePost = usuario.displayName
-            savePost(title, desc, namePost, arrayLikes);
+            if(title.length > 0 && desc.length > 0){
+                savePost(title, desc, namePost, arrayLikes);
+            } else {
+                alert('Para publicar escribe tu receta en el campo')
+            }
         } else {
             updatePost(idPost, { title: titlePost.value, description: inputPost.value })
             editStatus = false;
