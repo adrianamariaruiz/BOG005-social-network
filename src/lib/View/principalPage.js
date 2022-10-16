@@ -138,14 +138,22 @@ export const principalPage = () => {
             arrayEditBtn.forEach(btn => {
                 btn.addEventListener('click', async (event) => {
                     const dataEdit = await getPost(event.target.dataset.id)
-
+                    
                     const postEdit = dataEdit.data()
-                    formContainer.querySelector('.titlePost').value = postEdit.title
-                    formContainer.querySelector('.inputPost').value = postEdit.description
-
-                    editStatus = true;
-                    idPost = event.target.dataset.id
-                    formContainer.querySelector('.btnPost').innerText = 'Editar'
+                    const creatorPost = postEdit.namePost 
+                    const actualUser= auth.currentUser.displayName
+                    console.log('usuario', actualUser);
+                    console.log('dueño del post', creatorPost);
+                    if( actualUser == creatorPost){
+                        formContainer.querySelector('.titlePost').value = postEdit.title
+                        formContainer.querySelector('.inputPost').value = postEdit.description
+    
+                        editStatus = true;
+                        idPost = event.target.dataset.id
+                        formContainer.querySelector('.btnPost').innerText = 'Editar'
+                    } else {
+                        alert('Solo puedes editar las publicaciones creadas por ti')
+                    }
                 })
             })
 
