@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmail
 import { onNavigate } from '../../main.js';
 import { firebaseConfig } from './configFirebase.js';
 
+
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
@@ -25,7 +26,13 @@ export const createUser = (email, pass, name) => {
       console.log(error)
       const errorCode = error.code;
       if (errorCode === 'auth/email-already-in-use') {
-        alert('¡Éste correo ya existe!')
+        // alert('¡Éste correo ya existe!')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: '¡Éste correo ya existe!'
+        })
+
       } else if (errorCode === 'auth/weak-password') {
         alert('Contraseña débil, debe tener al menos 6 carácteres')
       } else if (errorCode === 'auth/invalid-email') {
