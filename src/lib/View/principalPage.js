@@ -63,15 +63,12 @@ export const principalPage = () => {
     footer.classList = 'footer'
     const pFooter= document.createElement ("p")
     pFooter.classList='pFooter'
-    pFooter.textContent=('Social Network-Laboratoria- BOG005 By Adriana - Jennifer - Sol')
-    // const containerFooter = document.createElement ("div")
-    // containerFooter.classList= 'containerFooter'
-    // const networkIcon = document.createElement ('i')
-    // networkIcon.classList.add =( 'networkIcon','fa-brands', 'fa-twitter')
-
-    // <i class='fa-brands', 'fa-twitter'></i>
-    // <i class='fa-brands', 'fa-facebook',></i>
-    // <i class='fa-brands',' fa-instagram'></i>
+    pFooter.textContent='Social Network-Laboratoria- BOG005 By Adriana Ruiz- Jenifer Samper - Sol Cortés'
+    const containerFooter = document.createElement ("div")
+    containerFooter.classList.add('containerFooter')
+    const networkIcon = document.createElement ('i')
+    networkIcon.classList.add('networkIcon','fa-solid','fa-envelope')
+    networkIcon.textContent='  socialnetwork.sn13@gmail.com'
 
 
 
@@ -223,10 +220,10 @@ export const principalPage = () => {
     nameEmailUser.append(welcome, wallNameUser);
     formContainer.append(titlePost, inputPost, btnPost)
     sectionContainer.append(nameEmailUser, formContainer, postContainer)
-
+    containerFooter.append(networkIcon)
+    footer.append(pFooter,containerFooter)
     wall.append(header, sectionContainer, footer)
-    footer.append(pFooter)
-    // ,containerFooter
-    // containerFooter.append(networkIcon)
+    
+    
     return wall
 }
