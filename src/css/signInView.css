@@ -83,6 +83,10 @@ img {
 }
 
 .linkSign,
+<<<<<<< HEAD
+=======
+.registrationLink a,
+>>>>>>> 1e1195c822e6c9efa86e9e901c9f6ebfff1a77dd
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
     font-weight: bold;
