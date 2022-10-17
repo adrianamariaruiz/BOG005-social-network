@@ -32,11 +32,6 @@ img {
     font-size: 1.5rem;
 }
 
-/* ::placeholder {
-     padding-left: 10px; 
-    font-size: 1rem;
-}  */
-
 .btnSignIn,
 .btnGoogle {
     font-family: 'Simonetta';
@@ -94,6 +89,11 @@ img {
     padding: 10px;
 }
 
+.registrationLink p {
+    color: black;
+    font-weight: normal;
+}
+
 .optionSignIn hr {
     font-family: 'Simonetta', cursive;
     width: 30%;
@@ -128,13 +128,6 @@ img {
 
 @media all and (min-width: 1024px) {
 
-    /* main {
-        height: 100vh;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: center;
-    } */
     .container {
         height: 100vh;
         display: flex;

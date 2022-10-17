@@ -4,8 +4,6 @@ import { savePost, onGetPosts, deletePost, getPost, updatePost, like, dislike, g
 
 export const principalPage = () => {
 
-    console.log(usuario)
-
     const wall = document.createElement('div')
     wall.classList = 'wall'
 
@@ -104,7 +102,7 @@ export const principalPage = () => {
         btnLike.classList.add("btnLike", "fa-regular", "fa-face-laugh-wink");
         btnLike.setAttribute('data-id', dataId)
 
-        if (dataPost.arrayLikes.includes(auth.currentUser.uid)) {
+        if (dataPost.arrayLikes.includes(usuario.uid)) {
             btnLike.classList.add('color-on')
         } else {
             btnLike.classList.remove('color-on')
@@ -166,6 +164,7 @@ export const principalPage = () => {
             // const idUser = usuario.uid
 
             const btnLikes = postContainer.querySelectorAll('.btnLike')
+
             btnLikes.forEach((btn) => {
                 btn.addEventListener('click', (event) => {
                     idPost = event.target.dataset.id
@@ -177,6 +176,7 @@ export const principalPage = () => {
                                 like(idPost, auth.currentUser.uid);
                             }
                         }
+
                     })
 
                     )
@@ -184,6 +184,8 @@ export const principalPage = () => {
             })
         })
     })
+
+
 
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
