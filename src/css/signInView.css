@@ -32,6 +32,11 @@ img {
     font-size: 1.5rem;
 }
 
+/* ::placeholder {
+     padding-left: 10px; 
+    font-size: 1rem;
+}  */
+
 .btnSignIn,
 .btnGoogle {
     font-family: 'Simonetta';
@@ -78,20 +83,11 @@ img {
 }
 
 .linkSign,
-<<<<<<< HEAD
-=======
-.registrationLink a,
->>>>>>> 1e1195c822e6c9efa86e9e901c9f6ebfff1a77dd
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
     font-weight: bold;
     color: #007878;
     padding: 10px;
-}
-
-.registrationLink p {
-    color: black;
-    font-weight: normal;
 }
 
 .optionSignIn hr {
@@ -128,6 +124,13 @@ img {
 
 @media all and (min-width: 1024px) {
 
+    /* main {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: center;
+    } */
     .container {
         height: 100vh;
         display: flex;

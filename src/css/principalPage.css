@@ -193,11 +193,20 @@
     width: 100%;
 }
 
-.pFooter  {
+
+
+.pFooter   {
     font-family: 'Simonetta', cursive;
     font-weight: bold;
-    padding-top: 25px;
-    display: block;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 60%;
+}
+.networkIcon{
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
     font-size: 60%;
 }
