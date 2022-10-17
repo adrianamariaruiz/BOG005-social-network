@@ -80,7 +80,7 @@ img {
 
 
 .linkSign,
-.registrationLink,
+.registrationLink a,
 .optionSignIn p {
     font-family: 'Simonetta', cursive;
     font-weight: bold;
