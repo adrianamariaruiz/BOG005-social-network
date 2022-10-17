@@ -4,6 +4,8 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebas
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 import { onNavigate } from '../../main.js';
 import { firebaseConfig } from './configFirebase.js';
+// import { Swal } from "https://cdn.jsdelivr.net/npm/sweetalert2@11";
+
 
 
 // Initialize Firebase
@@ -26,19 +28,33 @@ export const createUser = (email, pass, name) => {
       console.log(error)
       const errorCode = error.code;
       if (errorCode === 'auth/email-already-in-use') {
-        // alert('¡Éste correo ya existe!')
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: '¡Éste correo ya existe!'
         })
-
+        // alert('¡Éste correo ya existe!')
       } else if (errorCode === 'auth/weak-password') {
-        alert('Contraseña débil, debe tener al menos 6 carácteres')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: '¡Contraseña débil, debe tener al menos 6 carácteres!'
+        })
+        // alert('Contraseña débil, debe tener al menos 6 carácteres')
       } else if (errorCode === 'auth/invalid-email') {
-        alert('Éste correo es inválido')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Éste correo es inválido'
+        })
+        // alert('Éste correo es inválido')
       } else {
-        alert('Por favor ingrese los datos')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Por favor ingrese los datos'
+        })
+        // alert('Por favor ingrese los datos')
       }
     });
 };
@@ -48,7 +64,7 @@ export const authEmailPass = (email, pass) => {
     .then((userCredential) => {
       const user = userCredential.user;
 
-      console.log(user.displayName);
+      // console.log(user.displayName);
 
       if (usuario != '') {
         onNavigate('/principalPage');
@@ -57,11 +73,26 @@ export const authEmailPass = (email, pass) => {
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/user-not-found') {
-        alert('Usuario no encontrado')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Usuario no encontrado'
+        })
+        // alert('Usuario no encontrado')
       } else if (errorCode === 'auth/wrong-password') {
-        alert('¡Email o contraseña incorrectos!')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: '¡Email o contraseña incorrectos!'
+        })
+        // alert('¡Email o contraseña incorrectos!')
       } else if (errorCode === 'auth/invalid-email') {
-        alert('El correo es inválido')
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'El correo es inválido'
+        })
+        // alert('El correo es inválido')
       }
     });
 };
@@ -98,7 +129,12 @@ export const signOutCount = () => {
   signOut(auth).then(() => {
     onNavigate('/');
   }).catch((error) => {
-    alert(error, 'no pudiste cerrar sesión')
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'no pudiste cerrar sesión'
+    })
+    // alert(error, 'no pudiste cerrar sesión')
   });
 }
 
