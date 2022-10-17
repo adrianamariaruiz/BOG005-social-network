@@ -184,6 +184,15 @@
     width: 100%;
 }
 
+.pFooter  {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    padding-top: 25px;
+    display: block;
+    text-align: center;
+    font-size: 60%;
+}
+
 
 @media all and (min-width: 768px) {
     .imageTitle {
@@ -262,6 +271,9 @@
     .spanLikes {
         font-size: 25px;
     }
-
+    
+    .pFooter{
+        font-size: 100%;
+    }
 
 }

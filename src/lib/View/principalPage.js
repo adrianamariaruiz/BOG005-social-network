@@ -58,12 +58,15 @@ export const principalPage = () => {
     footer.classList = 'footer'
     const pFooter= document.createElement ("p")
     pFooter.classList='pFooter'
-    const containerFooter = document.createElement ("div")
-    containerFooter.classList= 'containerFooter'
+    pFooter.textContent=('Social Network-Laboratoria- BOG005 By Adriana - Jennifer - Sol')
+    // const containerFooter = document.createElement ("div")
+    // containerFooter.classList= 'containerFooter'
+    // const networkIcon = document.createElement ('i')
+    // networkIcon.classList.add =( 'networkIcon','fa-brands', 'fa-twitter')
 
-    // <i class="fa-brands fa-twitter"></i>
-    // <i class="fa-brands fa-facebook"></i>
-    // <i class="fa-brands fa-instagram"></i>
+    // <i class='fa-brands', 'fa-twitter'></i>
+    // <i class='fa-brands', 'fa-facebook',></i>
+    // <i class='fa-brands',' fa-instagram'></i>
 
     const printHello = (userNameHello) => {
         const hello = document.createElement('div');
@@ -201,5 +204,8 @@ export const principalPage = () => {
     formContainer.append(titlePost, inputPost, btnPost)
     sectionContainer.append(formContainer, postContainer)
     wall.append(header, sectionContainer, footer)
+    footer.append(pFooter)
+    // ,containerFooter
+    // containerFooter.append(networkIcon)
     return wall
 }
