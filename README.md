@@ -53,6 +53,15 @@ Diseñamos un prototipo de alta con ayuda de la herramienta figma para iniciar c
 
 ![Imágen de prototipo móvil de la vista inicio de pc](./src/images/prototipo_pc.png)
 
+## 5. Test de usabilidad
+
+Los test de usabilidad se realizaron en todas las vistas del proyecto (móvil, tablet, pc), donde los usuarios pudieron interactuar con click en los diferentes botones y funciones de la página, con el feedback recibido realizamos las siguientes modificaciones.
+
+* Link de registro (Cambio de link solo a la palabra 'Registrate')
+* Link de Inicio de Sesión (Cambio de link solo a las palabras 'Inicia Sesión')
+* Se modificaron las fuentes y estilos de las letras
+* Se modifico el color del botón de salir para que sea más visibles
+
 ## 4. Objetivos-Técnicos
 
 En este proyecto implementamos :
@@ -64,11 +73,8 @@ En este proyecto implementamos :
 * CSS3 y HTML5
 * Jest (Test Unitarios)
 
-## 5. Test de usabilidad
 
-Los test de usabilidad se realizaron en todas las vistas del proyecto (móvil, tablet, pc), donde los usuarios pudieron interactuar con click en los diferentes botones y funciones de la página, con el feedback recibido realizamos las siguientes modificaciones.
 
-* Link de registro (Cambio de link solo a la palabra 'Registrate')
-* Link de Inicio de Sesión (Cambio de link solo a las palabras 'Inicia Sesión')
-* Se modificaron las fuentes y estilos de las letras
-* Se modifico el color del botón de salir para que sea más visibles
+## Equipo
+
+[Adriana Ruiz](https://github.com/adrianamariaruiz) | [Jenifer Samper](https://github.com/jeniferSamper) | [Sol Cortés](https://github.com/solcortes2018)
