@@ -131,7 +131,24 @@ export const principalPage = () => {
             const arrayDeleteBtn = postContainer.querySelectorAll('.btnDelete')
             arrayDeleteBtn.forEach(btn => {
                 btn.addEventListener('click', (event) => {
-                    deletePost(event.target.dataset.id);
+                    Swal.fire({
+                        title: 'Estás seguro?',
+                        text: "No podrás recuperar la publicación!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, eliminar!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          Swal.fire(
+                            'Eliminado!',
+                            'Tu publicación ha sido eliminada correctamente',
+                            'Eliminada correctamente',
+                            deletePost(event.target.dataset.id),
+                          )
+                        }
+                      })
                 })
             })
 
