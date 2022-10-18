@@ -267,14 +267,19 @@
     .spanLikes {
         font-size: 18px;
     }
+.containerFooter{
+    justify-content: center;
 
+}
     .pFooter {
-       font-size:0.5rem;
+       font-size:0.8rem;
+       padding-bottom:0px ;
     }
 
     .networkIcon {
-        font-size:0.5rem;
-        padding-bottom:100%;
+        font-size:0.7rem;
+         padding: 10px;
+       
     }
 
 }
