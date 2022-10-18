@@ -1,0 +1,349 @@
+/* colors: 
+#FBF6F0
+#DFF2EC
+#FAF4B7
+#CDF0EA
+#65C7C7 
+#007878
+#ECC5FB
+*/
+
+.header {
+    font-family: 'Simonetta', cursive;
+    padding: 5px;
+    background-color: #65C7C7;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imageTitle {
+    display: none;
+}
+
+.imageLogo {
+    /* border: solid 1px black; */
+    margin: 2px;
+    height: 92%;
+    width: auto;
+}
+
+.btn_SignOut,
+.btnPost {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    background-color: #ECC5FB;
+    border: solid 2px #f3f1dc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #0000005b;
+    text-align: center;
+    color: #000000;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btnPost {
+    height: 30px;
+    width: 130px;
+    background-color: #65C7C7;
+}
+
+.btn_SignOut {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.sectionContainer {
+    margin: 10px 10px 70px 10px;
+    padding: 10px;
+    /* border: solid 1px pink; */
+    box-shadow: 2px 2px 10px #0000005b;
+    background-color: #DFF2EC;
+    height: 100%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.formContainer-principalPage {
+    padding: 10px;
+    margin-bottom: 5px;
+    height: 100%;
+    /* border: solid 1px yellow; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titlePost {
+    height: 30px;
+    font-family: 'Simonetta', cursive;
+    width: 80%;
+    border-style: none;
+    outline-color: #65C7C7;
+    box-shadow: 2px 2px 10px #0000005b;
+}
+
+.inputPost {
+    font-family: 'Simonetta', cursive;
+    height: 80px;
+    width: 80%;
+    margin: 10px 0px 10px 0px;
+    border-style: none;
+    outline-color: #65C7C7;
+    box-shadow: 2px 2px 10px #0000005b;
+}
+
+
+.postContainer {
+    /* border: solid 1px red; */
+    background-color: #FBF6F0;
+    height: 100%;
+}
+
+/* los posts */
+.task {
+    /* border: solid 1px #007878; */
+    background-color: #ebeaea;
+    box-shadow: 2px 1px 5px #0000005b;
+    margin: 20px;
+    padding: 10px;
+}
+
+.titleTask {
+    margin-bottom: 10px;
+}
+
+.btnContainer {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+    /* background-color: #65C7C7; */
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.btnEdit {
+    /* border-radius: 50%; */
+    border-style: none;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    margin-left: 40px;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.btnEdit:hover {
+    color: #5c5c5c;
+}
+
+.btnDelete {
+    /* border-radius: 50%; */
+    border-style: none;
+    cursor: pointer;
+    margin: 5px 20px 5px 40px;
+    height: 30px;
+    width: 30px;
+    font-size: 18px;
+    background-color: transparent;
+    /* margin-left: 40px; */
+}
+
+.btnDelete:hover {
+    color: #5c5c5c;
+}
+
+.btnLike {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.color-on {
+    color: #007878;
+}
+
+.inputLikes {
+    width: 50px;
+    background-color: transparent;
+    border-style: none;
+    color: #007878;
+}
+
+.footer {
+    background-color: #65C7C7;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+.pFooter {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+.networkIcon {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+
+@media all and (min-width: 768px) {
+    .imageTitle {
+        display: flex;
+        margin: 2px;
+        height: 92%;
+        width: auto;
+    }
+
+    .titleTask {
+        font-size: 1.4rem;
+    }
+
+    .nameTask {
+        color: #007878;
+    }
+
+    .descriptionTask,
+    .nameTask {
+        font-size: 1.2rem;
+    }
+
+    .sectionContainer {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .formContainer-principalPage {
+        /* border: solid 1px rgb(238, 255, 0); */
+        width: 60%;
+        padding: 30px;
+    }
+
+    .postContainer {
+        width: 70%;
+    }
+
+    .titlePost {
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .inputPost {
+        height: 100px;
+        font-size: 1rem;
+    }
+
+    .btnPost {
+        height: 40px;
+        width: 150px;
+        font-size: 1.2rem;
+    }
+
+    .spanLikes {
+        font-size: 18px;
+    }
+.containerFooter{
+    justify-content: center;
+
+}
+    .pFooter {
+       font-size:0.8rem;
+       padding-bottom:0px ;
+    }
+
+    .networkIcon {
+        font-size:0.7rem;
+         padding: 10px;
+       
+    }
+
+}
+
+/* .btn_SignOut::before {
+        content: 'Cerrar Sesión';
+    } */
+
+
+@media all and (min-width: 1024px) {
+
+    .header {
+        height: 130px;
+        padding: 20px;
+    }
+
+    .imageLogo {
+        margin-bottom: 20px;
+    }
+
+    .titlePost {
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
+    .inputPost {
+        height: 150px;
+        font-size: 1.3rem;
+    }
+
+    .btnPost {
+        height: 50px;
+        width: 200px;
+        font-size: 1.5rem;
+    }
+
+    .btn_SignOut {
+        height: 40px;
+        width: 150px;
+    }
+
+    .btnLike,
+    .btnDelete,
+    .btnEdit {
+        font-size: 20px;
+    }
+
+    .btnLike {
+        margin-right: 8px;
+    }
+
+    .spanLikes {
+        font-size: 25px;
+    }
+
+    .pFooter {
+        font-size: 0.8 rem;
+        
+    }
+
+    .networkIcon {
+        padding-top: 0;
+        padding-bottom: 10px;
+        font-size: 0.5 rem;
+    }
+
+}

@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #CDF0EA;
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Simonetta', cursive;
+}
+
+img {
+    width: 60%;
+    margin-bottom: 5%;
+}
+
+.form-container-signIn {
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Simonetta', cursive;
+}
+
+.inputForm {
+    font-family: 'Simonetta', cursive;
+    background-color: #FBF6F0;
+    border: solid 2px #65C7C7;
+    outline-color: #ECC5FB;
+    width: 80%;
+    height: 7vh;
+    margin: 2%;
+    border-radius: 15px;
+    padding-left: 20px;
+    font-size: 1.5rem;
+}
+
+.btnSignIn,
+.btnGoogle {
+    font-family: 'Simonetta';
+    font-weight: bold;
+    background-color: #65C7C7;
+    border: solid 2px #FBF6F0;
+    height: 8vh;
+    border-radius: 15px;
+    text-align: center;
+    color: #013b3b;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 50%;
+}
+
+.btnSignIn {
+    margin-top: 15px;
+}
+
+.btnGoogle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+    background-color: transparent;
+    border: solid 2px #65C7C7;
+}
+
+.btnGoogle img {
+    height: 30px;
+    width: 30px;
+    padding: 5% 2% 0 0;
+}
+
+.optionSignIn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+}
+
+.registrationLink{
+    font-weight: bold;
+}
+
+.linkSign,
+.optionSignIn p {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    color: #007878;
+    padding: 10px;
+}
+
+.registrationLink p {
+    color: black;
+    font-weight: normal;
+}
+
+.optionSignIn hr {
+    font-family: 'Simonetta', cursive;
+    width: 30%;
+    border: solid 0.3px #007878;
+}
+
+.btnSignIn:hover,
+.btnGoogle:hover {
+    background: #65C7C7;
+    color: #FBF6F0;
+}
+
+.btnSignIn:active,
+.btnGoogle:active {
+    border: 1px solid #FBF6F0;
+}
+
+@media all and (min-width:768px) {
+    body {
+        font-size: 2rem;
+    }
+
+    ::placeholder {
+        font-size: 1.5rem;
+    }
+
+    .btnSignIn,
+    .btnGoogle {
+        font-size: 2rem;
+    }
+}
+
+@media all and (min-width: 1024px) {
+
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: center;
+    }
+
+    img {
+        height: 350px;
+        width: auto;
+        padding-top: 20px;
+    }
+
+    .form-container-signIn {
+        background-color: rgba(249, 249, 249, 0.4);
+        padding: 2%;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    }
+
+    body {
+        font-size: 1.3rem;
+    }
+
+    ::placeholder {
+        font-size: 1.3rem;
+    }
+
+    .btnSignIn,
+    .btnGoogle {
+        font-size: 1.3rem;
+        width: 55%;
+    }
+}
