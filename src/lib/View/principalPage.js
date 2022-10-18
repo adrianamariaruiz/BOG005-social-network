@@ -62,8 +62,6 @@ export const principalPage = () => {
     // <i class="fa-brands fa-facebook"></i>
     // <i class="fa-brands fa-instagram"></i>
 
-
-
     const printPost = (dataPost, dataId) => {
         const task = document.createElement('div');
         task.classList = 'task';
@@ -136,25 +134,29 @@ export const principalPage = () => {
             arrayEditBtn.forEach(btn => {
                 btn.addEventListener('click', async (event) => {
                     const dataEdit = await getPost(event.target.dataset.id)
-                    
+
                     const postEdit = dataEdit.data()
-                    const creatorPost = postEdit.namePost 
-                    const actualUser= auth.currentUser.displayName
-                    console.log('usuario', actualUser);
-                    console.log('dueño del post', creatorPost);
-                    if( actualUser == creatorPost){
+                    const creatorPost = postEdit.namePost
+                    const actualUser = auth.currentUser.displayName
+                    // console.log('usuario', actualUser);
+                    // console.log('dueño del post', creatorPost);
+                    if (actualUser == creatorPost) {
                         formContainer.querySelector('.titlePost').value = postEdit.title
                         formContainer.querySelector('.inputPost').value = postEdit.description
-    
+
                         editStatus = true;
                         idPost = event.target.dataset.id
                         formContainer.querySelector('.btnPost').innerText = 'Editar'
                     } else {
-                        alert('Solo puedes editar las publicaciones creadas por ti')
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Solo puedes editar las publicaciones creadas por ti'
+                        })
+                        // alert('Solo puedes editar las publicaciones creadas por ti')
                     }
                 })
             })
-
             // const idUser = usuario.uid
 
             const btnLikes = postContainer.querySelectorAll('.btnLike')
@@ -179,18 +181,21 @@ export const principalPage = () => {
         })
     })
 
-
-
     btnPost.addEventListener("click", (e) => {
         e.preventDefault()
         const title = titlePost.value
         const desc = inputPost.value
         if (!editStatus) {
             const namePost = usuario.displayName
-            if(title.length > 0 && desc.length > 0){
+            if (title.length > 0 && desc.length > 0) {
                 savePost(title, desc, namePost, arrayLikes);
             } else {
-                alert('Para publicar escribe tu receta en el campo')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Para publicar escribe tu receta en el campo'
+                })
+                // alert('Para publicar escribe tu receta en el campo')
             }
         } else {
             updatePost(idPost, { title: titlePost.value, description: inputPost.value })
