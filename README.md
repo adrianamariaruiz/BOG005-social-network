@@ -12,7 +12,7 @@
 
 ## 1. Introducción
 
-Kids Foods, es una red social diseñada para crear una comunidad de madres y cuidadores que amen cocinar y brindar la mejor alimentación a sus pequeños, donde puedan compartir todas sus recetas dibertidas y saludables e interactuar con otros usuarios mediante likes.
+Kids Foods, es una red social diseñada para crear una comunidad de madres y cuidadores que amen cocinar y brindar la mejor alimentación a sus pequeños, donde puedan compartir todas sus recetas divertidas y saludables e interactuar con otros usuarios mediante likes.
 
 ![Imágen de la vista móvil de registro y muro](./src/images/vista_movil.png)
 
@@ -41,7 +41,7 @@ QUIERO: poder visualizar el muro
 PARA: poder editar, eliminar y dar like a los post.
 
 
-## 3. Prototipo y guia de estilos 
+## 3. Prototipo y guía de estilos 
 
 Diseñamos un prototipo de alta con ayuda de la herramienta figma para iniciar con la maquetación de la vista de móvil y lo fuimos adaptando para tablet y pc, así mismo escogimos la paleta de colores acorde y diseñamos el logo con ayuda de la herramienta canva.
 
