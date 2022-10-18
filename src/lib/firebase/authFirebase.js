@@ -7,6 +7,7 @@ import { firebaseConfig } from './configFirebase.js';
 // import { Swal } from "https://cdn.jsdelivr.net/npm/sweetalert2@11";
 
 
+
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 

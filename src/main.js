@@ -3,12 +3,7 @@ import { signIn } from './lib/View/signIn.js';
 import { signUp } from './lib/View/signUp.js';
 import { principalPage } from './lib/View/principalPage.js';
 
-function elementRoot() {
-  if (document.getElementById('rootDiv') == null) {
-    document.body.innerHTML = '<main id="root"></main>';
-  }
-}
-elementRoot();
+const rootDiv = document.getElementById('root');
 
 // objeto de las rutas
 const routes = {
@@ -17,7 +12,6 @@ const routes = {
   '/principalPage': principalPage(),
 };
 
-const rootDiv = document.getElementById('root');
 
 // permite navegar atraves de las ruta
 export const onNavigate = (pathname, paramRoutes = routes) => {
@@ -26,7 +20,7 @@ export const onNavigate = (pathname, paramRoutes = routes) => {
     pathname,
     window.location.origin + pathname,
   );
-  rootDiv.replaceChildren(paramRoutes[pathname])
+  document.getElementById('root').replaceChildren(paramRoutes[pathname])
 };
 
 // permite utilizar flechas del navegador

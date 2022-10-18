@@ -10,4 +10,8 @@ const registerUser = (email, password) => {
     return Promise.resolve()
 }
 
-export {createUser, loginUser, registerUser}
+const onAuthStateChanged = ((user) => {
+    return Promise.resolve()
+})
+
+export {createUser, loginUser, registerUser, onAuthStateChanged}

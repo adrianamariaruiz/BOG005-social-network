@@ -31,7 +31,6 @@ export const principalPage = () => {
     welcome.textContent = 'Bienvenida '
     welcome.classList.add('welcome')
     const wallNameUser = document.createElement('p');
-    wallNameUser.textContent = auth.displayName;
     wallNameUser.classList.add('welcome')
     wallNameUser.setAttribute('id', 'nameUser');
 
