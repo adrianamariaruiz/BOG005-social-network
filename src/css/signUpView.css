@@ -7,6 +7,10 @@
     font-family: 'Simonetta', cursive;
     margin-bottom: 5%;
 }
+.registrationLink{
+    font-weight: normal;
+
+}
 
 @media all and (min-width:768px){
    

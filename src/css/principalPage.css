@@ -194,6 +194,24 @@
 }
 
 
+
+.pFooter {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+.networkIcon {
+    font-family: 'Simonetta', cursive;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 0.5rem;
+}
+
+
 @media all and (min-width: 768px) {
     .imageTitle {
         display: flex;
@@ -250,10 +268,21 @@
         font-size: 18px;
     }
 
-    /* .btn_SignOut::before {
+    .pFooter {
+       font-size:0.5rem;
+    }
+
+    .networkIcon {
+        font-size:0.5rem;
+        padding-bottom:100%;
+    }
+
+}
+
+/* .btn_SignOut::before {
         content: 'Cerrar Sesión';
     } */
-}
+
 
 @media all and (min-width: 1024px) {
 
@@ -299,6 +328,17 @@
 
     .spanLikes {
         font-size: 25px;
+    }
+
+    .pFooter {
+        font-size: 0.8 rem;
+        
+    }
+
+    .networkIcon {
+        padding-top: 0;
+        padding-bottom: 10px;
+        font-size: 0.5 rem;
     }
 
 }
